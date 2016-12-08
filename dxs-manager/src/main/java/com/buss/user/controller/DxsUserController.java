@@ -610,12 +610,12 @@ public class DxsUserController extends BaseController {
 					"FROM\n" +
 					"\tdxs_user\n" +
 					"WHERE\n" +
-					"\t'"+ time +"' < dxs_user.createtime";
+					"\t'"+ time +"' <= dxs_user.createtime";
 
 			// 统计每日用户的注册量
 			String dailyStatistics = "SELECT\n" +
 					"\tDATE_FORMAT(createtime, '%Y-%m-%d') AS time,\n" +
-					"\tcount(*) AS count\n" +
+					"\tcount(1) AS count\n" +
 					"FROM\n" +
 					"\tdxs_user\n" +
 					"GROUP BY\n" +
@@ -754,9 +754,9 @@ public class DxsUserController extends BaseController {
 						"FROM\n" +
 						"\tdxs_user_detail u\n" +
 						"WHERE\n" +
-						"\tu.postal_address LIKE '%黑龙江省%'\n" +
-						"OR u.postal_address LIKE '%吉林省%'\n" +
-						"OR u.postal_address LIKE '%辽宁省%'\n" + stringBuffer.toString();
+						"\tu.postal_address LIKE '%"+ address1 +"%'\n" +
+						"OR u.postal_address LIKE '%"+ address2 +"%'\n" +
+						"OR u.postal_address LIKE '%"+ address3 +"%'\n" + stringBuffer.toString();
 
 				counts = this.systemService.findListbySql(area_num);
 			}

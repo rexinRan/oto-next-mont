@@ -1,0 +1,22 @@
+# Java:
+*.class
+
+# Package Files #
+*.jar
+*.war
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# My configurations:
+target/
+.settings/
+
+.idea/
+*.iml
+
+jeecglogs/
+*.log
+dxs-server/~$´ó´´.xlsx

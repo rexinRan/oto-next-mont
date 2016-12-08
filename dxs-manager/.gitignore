@@ -1,0 +1,17 @@
+# Windows:
+Thumbs.db
+
+# My configurations:
+.classpath
+*.iml
+.project
+.settings/
+.gradle/
+target/
+build/
+.idea
+*.log
+
+# 忽略数据库配置文件（因为jeecg不支持linux数据库生成表，又为了避免开发人员改成线下地址提交）
+dbconfig.properties
+jeecg_database.properties

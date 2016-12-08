@@ -1,0 +1,353 @@
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/context/mytags.jsp"%>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="online/template/ledefault/css/vendor.css">
+  <link rel="stylesheet" href="online/template/ledefault/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="online/template/ledefault/css/bootstrap.css">
+  <link rel="stylesheet" href="online/template/ledefault/css/app.css">
+  
+  <link rel="stylesheet" href="plug-in/Validform/css/metrole/style.css" type="text/css"/>
+  <link rel="stylesheet" href="plug-in/Validform/css/metrole/tablefrom.css" type="text/css"/>
+  
+  <script type="text/javascript" src="plug-in/jquery/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="plug-in/tools/dataformat.js"></script>
+  <script type="text/javascript" src="plug-in/easyui/jquery.easyui.min.1.3.2.js"></script>
+  <script type="text/javascript" src="plug-in/easyui/locale/zh-cn.js"></script>
+  <script type="text/javascript" src="plug-in/tools/syUtil.js"></script>
+  <script type="text/javascript" src="plug-in/My97DatePicker/WdatePicker.js"></script>
+  <script type="text/javascript" src="plug-in/lhgDialog/lhgdialog.min.js"></script>
+  <script type="text/javascript" src="plug-in/tools/curdtools_zh-cn.js"></script>
+  <script type="text/javascript" src="plug-in/tools/easyuiextend.js"></script>
+  <script type="text/javascript" src="plug-in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+  <script type="text/javascript" src="plug-in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+  <script type="text/javascript" src="plug-in/Validform/js/datatype_zh-cn.js"></script>
+  <script type="text/javascript" src="plug-in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+  <link rel="stylesheet" href="plug-in/uploadify/css/uploadify.css" type="text/css"></link>
+  <script type="text/javascript" src="plug-in/uploadify/jquery.uploadify-3.1.js"></script>
+  <link rel="stylesheet" href="plug-in/umeditor/themes/default/css/umeditor.css" type="text/css"></link>
+  <script type="text/javascript" src="plug-in/umeditor/umeditor.config.js"></script>
+  <script type="text/javascript" src="plug-in/umeditor/umeditor.min.js"></script>
+  <script type="text/javascript" src="plug-in/umeditor/lang/zh-cn/zh-cn.js"></script>
+   <script type="text/javascript">
+  //编写自定义JS代码
+  $(function(){
+	  /* 文件提交 */
+	  $('#_imgUrl').uploadify({
+		  'swf' : 'plug-in/uploadify/uploadify.swf',
+		  'uploader' : 'files/upload.do;jsessionid=${pageContext.session.id}',    /*后期需要传当前展示项目的ID去做更新*/
+		  'buttonText' : '上传配图',
+		  'width' : 100,
+		  'height' : 50,
+		  'onUploadSuccess' : function(file, data, response) {
+			  alert('successfully uploaded ' + ':' + data);
+			  console.info($('#imgUrl'))
+			  $('#imgUrl').val(data);
+			  $('#wImgurl').attr("src",data);
+		  }
+	  });
+  })
+  function chk() {
+	  var obj = document.getElementsByName('projectStatus');
+
+	  var objSelect =  $('#_danxuan').val();
+	  for(var j = 0; j < objSelect.length; j++) {
+		  for (var i = 0; i < obj.length; i++) {
+			  if (obj[i].value == objSelect[j]) {
+
+				  obj[i].checked = "checked";
+			  }
+		  }}}
+
+
+  </script>
+</head>
+
+ <body>
+
+  <form id="formobj" action="dxsTrainCourseVideoController.do?doUpdate" name="formobj" method="post">
+			<input type="hidden" id="btn_sub" class="btn_sub"/>
+			<input type="hidden" name="id" value='${dxsTrainCourseVideoPage.id}' >
+			
+			
+			<div class="tab-wrapper">
+			    <!-- tab -->
+			    <ul class="nav nav-tabs">
+			      <li role="presentation" class="active"><a href="javascript:void(0);"></a></li>
+			    </ul>
+			    <!-- tab内容 -->
+			    <div class="con-wrapper" id="con-wrapper1" style="display: block;">
+			      <div class="row form-wrapper">
+							<%--<div class="row show-grid">--%>
+			          <%--<div class="col-xs-3 text-center">--%>
+			          	<%--<b>课程id：</b>--%>
+			          <%--</div>--%>
+			          <%--<div class="col-xs-3">--%>
+								<%--<input id="tocId" name="tocId" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.tocId}'>--%>
+						<%--<span class="Validform_checktip" style="float:left;height:0px;"></span>--%>
+						<%--<label class="Validform_label" style="display: none">课程id</label>--%>
+			          <%--</div>--%>
+			          <%----%>
+			        <%----%>
+			          <%--<div class="col-xs-3 text-center">--%>
+			          	<%--<b>导师id：</b>--%>
+			          <%--</div>--%>
+			          <%--<div class="col-xs-3">--%>
+								<%--<input id="userId" name="userId" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.userId}'>--%>
+						<%--<span class="Validform_checktip" style="float:left;height:0px;"></span>--%>
+						<%--<label class="Validform_label" style="display: none">导师id</label>--%>
+			          <%--</div>--%>
+							<%--</div>--%>
+			          
+			        
+							<div class="row show-grid">
+			          <div class="col-xs-3 text-center">
+			          	<b>视频名称：</b>
+			          </div>
+			          <div class="col-xs-3">
+								<input id="videoName" name="videoName" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.videoName}'>
+						<span class="Validform_checktip" style="float:left;height:0px;"></span>
+						<label class="Validform_label" style="display: none">视频名称</label>
+			          </div>
+
+								<div class="col-xs-3 text-center">
+									<b>视频时长：</b>
+								</div>
+								<div class="col-xs-3">
+									<input id="videoHourses" name="videoHourses" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.videoHourses}'>
+									<span class="Validform_checktip" style="float:left;height:0px;"></span>
+									<label class="Validform_label" style="display: none">视频时长</label>
+								</div>
+							</div>
+
+
+
+			          
+			        
+							<div class="row show-grid">
+			          <div class="col-xs-3 text-center">
+			          	<b>视频地址：</b>
+			          </div>
+			          <div class="col-xs-3">
+								<input id="videoUrl" name="videoUrl" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.videoUrl}'>
+						<span class="Validform_checktip" style="float:left;height:0px;"></span>
+						<label class="Validform_label" style="display: none">视频地址</label>
+			          </div>
+			          
+			        
+			          <div class="col-xs-3 text-center">
+			          	<b>编号：</b>
+			          </div>
+			          <div class="col-xs-3">
+								<input id="sort" name="sort" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.sort}'>
+						<span class="Validform_checktip" style="float:left;height:0px;"></span>
+						<label class="Validform_label" style="display: none">编号</label>
+			          </div>
+							</div>
+			          
+
+							<div class="row show-grid">
+			          <div class="col-xs-3 text-center">
+			          	<b>内部标记：</b>
+			          </div>
+			          <div class="col-xs-3">
+						  <select id="inSign" name="inSign"  class="form-control">
+							  <option value="0" <c:if test="${dxsTrainCourseVideoPage.inSign==0}">selected</c:if>>试看</option>
+							  <option value="1" <c:if test="${dxsTrainCourseVideoPage.inSign==1}">selected</c:if>>正常</option>
+						  </select>
+								<input id="_inSign"  type="hidden"  value='${dxsTrainCourseVideoPage.inSign}'>
+						<span class="Validform_checktip" style="float:left;height:0px;"></span>
+						<label class="Validform_label" style="display: none">内部标记</label>
+			          </div>
+			          
+			        
+			          <%--<div class="col-xs-3 text-center">--%>
+			          	<%--<b>外部标记：</b>--%>
+			          <%--</div>--%>
+			          <%--<div class="col-xs-3">--%>
+								<%--<input id="outSign" name="outSign" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.outSign}'>--%>
+						<%--<span class="Validform_checktip" style="float:left;height:0px;"></span>--%>
+						<%--<label class="Validform_label" style="display: none">外部标记</label>--%>
+			          <%--</div>--%>
+							</div>
+
+								<div class="row show-grid">
+									<div class="col-xs-3 text-center">
+										<b>是否免费：</b>
+									</div>
+									<div class="col-xs-3">
+											<input type="radio" name="isFree" value="1" <c:if test="${dxsTrainCourseVideoPage.isFree == 1}">checked</c:if>>免费
+											<input type="radio" name="isFree" value="0" <c:if test="${dxsTrainCourseVideoPage.isFree == 0}">checked</c:if>>收费
+
+										<%--<select name="isFree"  class="form-control">--%>
+											<%--<option value="0" <c:if test="${dxsTrainCourseVideoPage.isFree == 0}">selected="selected"</c:if>>收费</option>--%>
+											<%--<option value="1" <c:if test="${dxsTrainCourseVideoPage.isFree == 1}">selected="selected"</c:if>>免费</option>--%>
+										<%--</select>--%>
+										<span class="Validform_checktip" style="float:left;height:0px;"></span>
+										<label class="Validform_label" style="display: none">是否免费</label>
+									</div>
+									<div class="col-xs-3 text-center">
+										<b>价格：</b>
+									</div>
+									<div class="col-xs-3">
+										<input id="price" name="price" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.price}' datatype="n" errormsg="请输入数字类型">
+										<span class="Validform_checktip" style="float:left;height:0px;"></span>
+										<label class="Validform_label" style="display: none">价格</label>
+									</div>
+
+
+								</div>
+
+								<div class="row show-grid">
+									<div class="col-xs-3 text-center">
+										<b>缩略图：</b>
+									</div>
+									<div class="col-xs-3">
+										<div id="_imgUrl"></div>
+										<input id="imgUrl" name="imgUrl" type="text" class="form-control" value="${dxsTrainCourseVideoPage.imgUrl}" style="display: none">
+										<%--<input id="imgUrl" name="imgUrl" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.imgUrl}'>--%>
+										<span class="Validform_checktip" style="float:left;height:0px;"></span>
+										<label class="Validform_label" style="display: none">缩略图</label>
+									</div>
+									<div class="col-xs-3">
+										<img id="wImgurl" src='${dxsTrainCourseVideoPage.imgUrl}'width="70%" height="30%"/>
+									</div>
+
+								</div>
+
+
+			          
+			        
+			          <%--<div class="col-xs-3 text-center">--%>
+			          	<%--<b>创建时间：</b>--%>
+			          <%--</div>--%>
+			          <%--<div class="col-xs-3">--%>
+								<%--<input id="createTime" name="createTime" type="text" style="width: 150px"  class="Wdate" onClick="WdatePicker()" value='<fmt:formatDate value='${dxsTrainCourseVideoPage.createTime}' type="date" pattern="yyyy-MM-dd"/>'>--%>
+						<%--<span class="Validform_checktip" style="float:left;height:0px;"></span>--%>
+						<%--<label class="Validform_label" style="display: none">创建时间</label>--%>
+			          <%--</div>--%>
+							<%--</div>--%>
+			          <%----%>
+			        <%----%>
+							<%--<div class="row show-grid">--%>
+			          <%--<div class="col-xs-3 text-center">--%>
+			          	<%--<b>更新时间：</b>--%>
+			          <%--</div>--%>
+			          <%--<div class="col-xs-3">--%>
+								<%--<input id="updateTime" name="updateTime" type="text" style="width: 150px"  class="Wdate" onClick="WdatePicker()" value='<fmt:formatDate value='${dxsTrainCourseVideoPage.updateTime}' type="date" pattern="yyyy-MM-dd"/>'>--%>
+						<%--<span class="Validform_checktip" style="float:left;height:0px;"></span>--%>
+						<%--<label class="Validform_label" style="display: none">更新时间</label>--%>
+			          <%--</div>--%>
+			          <%----%>
+			        <%----%>
+			          <%--<div class="col-xs-3 text-center">--%>
+			          	<%--<b>删除标志：</b>--%>
+			          <%--</div>--%>
+			          <%--<div class="col-xs-3">--%>
+								<%--<input id="isDelete" name="isDelete" type="text" class="form-control"  value='${dxsTrainCourseVideoPage.isDelete}'>--%>
+						<%--<span class="Validform_checktip" style="float:left;height:0px;"></span>--%>
+						<%--<label class="Validform_label" style="display: none">删除标志</label>--%>
+			          <%--</div>--%>
+							<%--</div>--%>
+			          
+			        
+
+			       
+			          <div class="row" id = "sub_tr" style="display: none;">
+				        <div class="col-xs-12 layout-header">
+				          <div class="col-xs-6"></div>
+				          <div class="col-xs-6"><button type="button" onclick="neibuClick();" class="btn btn-default">提交</button></div>
+				        </div>
+				      </div>
+			     </div>
+			   </div>
+			   
+			   <div class="con-wrapper" id="con-wrapper2" style="display: block;"></div>
+			 </div>
+	</form>
+<script type="text/javascript">
+$(function() {
+    $("#formobj").Validform({
+        tiptype: 1,
+        btnSubmit: "#btn_sub",
+        btnReset: "#btn_reset",
+        ajaxPost: true,
+		beforeSubmit: function(curform) {
+            var tag = true;
+			//提交前处理
+            return tag;
+        },
+        usePlugin: {
+            passwordstrength: {
+                minLen: 6,
+                maxLen: 18,
+                trigger: function(obj, error) {
+                    if (error) {
+                        obj.parent().next().find(".Validform_checktip").show();
+                        obj.find(".passwordStrength").hide();
+                    } else {
+                        $(".passwordStrength").show();
+                        obj.parent().next().find(".Validform_checktip").hide();
+                    }
+                }
+            }
+        },
+        callback: function(data) {
+            if (data.success == true) {
+			     var win = frameElement.api.opener;
+                 win.reloadTable();
+ 				 win.tip(data.msg);
+ 				 frameElement.api.close();
+            } else {
+                if (data.responseText == '' || data.responseText == undefined) {
+                    $.messager.alert('错误', data.msg);
+                    $.Hidemsg();
+                } else {
+                    try {
+                        var emsg = data.responseText.substring(data.responseText.indexOf('错误描述'), data.responseText.indexOf('错误信息'));
+                        $.messager.alert('错误', emsg);
+                        $.Hidemsg();
+                    } catch(ex) {
+                        $.messager.alert('错误', data.responseText + '');
+                    }
+                }
+                return false;
+            }
+        }
+    });
+});
+</script>
+
+<script type="text/javascript">
+   $(function(){
+    //查看模式情况下,删除和上传附件功能禁止使用
+	if(location.href.indexOf("load=detail")!=-1){
+		$(".jeecgDetail").hide();
+	}
+	
+	if(location.href.indexOf("mode=read")!=-1){
+		//查看模式控件禁用
+		$("#formobj").find(":input").attr("disabled","disabled");
+	}
+	if(location.href.indexOf("mode=onbutton")!=-1){
+		//其他模式显示提交按钮
+		$("#sub_tr").show();
+	}
+   });
+
+  var neibuClickFlag = false;
+  function neibuClick() {
+	  neibuClickFlag = true; 
+	  $('#btn_sub').trigger('click');
+  }
+
+</script>
+ </body>
+<script src = "webpage/com/buss/traincoursevideo/dxsTrainCourseVideo.js"></script>		
+</html>

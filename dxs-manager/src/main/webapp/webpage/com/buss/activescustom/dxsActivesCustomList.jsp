@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/context/mytags.jsp"%>
+<t:base type="jquery,easyui,tools,DatePicker"></t:base>
+<div class="easyui-layout" fit="true">
+  <div region="center" style="padding:0px;border:0px">
+  <t:datagrid name="dxsActivesCustomList" checkbox="true" fitColumns="false" title="dxs_actives_custom" actionUrl="dxsActivesCustomController.do?datagrid" idField="id" fit="true" queryMode="group">
+   <t:dgCol title="主键"  field="id"  hidden="true"  queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="用户名"  field="userId"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="课程id"  field="customizedId"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="国家id"  field="customCountryId"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="选修课ID"  field="customCoursesId"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="住宿方式"  field="customModeId"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="课程时长"  field="customDurationId"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="签证方式id"  field="customVisaId"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="setouttime"  field="setouttime" formatter="yyyy-MM-dd"   queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="紧急联系人"  field="contacts1"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="紧急联系电话"  field="phone1"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="紧急联系人2"  field="contacts2"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="紧急联系电话2"  field="phone2"    queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="是否缴费"  field="result"    queryMode="group"  width="120"></t:dgCol>
+   <%--<t:dgCol title="创建时间"  field="createTime" formatter="yyyy-MM-dd"   queryMode="group"  width="120"></t:dgCol>--%>
+   <%--<t:dgCol title="更新时间"  field="updateTime" formatter="yyyy-MM-dd"   queryMode="group"  width="120"></t:dgCol>--%>
+   <%--<t:dgCol title="删除标志"  field="isDelete"    queryMode="group"  width="120"></t:dgCol>--%>
+   <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
+   <t:dgDelOpt title="删除" url="dxsActivesCustomController.do?doDel&id={id}" />
+   <t:dgToolBar title="录入" icon="icon-add" url="dxsActivesCustomController.do?goAdd" funname="add" height="720" width="1120"></t:dgToolBar>
+   <t:dgToolBar title="编辑" icon="icon-edit" url="dxsActivesCustomController.do?goUpdate" funname="update" height="720" width="1120"></t:dgToolBar>
+   <t:dgToolBar title="批量删除"  icon="icon-remove" url="dxsActivesCustomController.do?doBatchDel" funname="deleteALLSelect"></t:dgToolBar>
+   <t:dgToolBar title="查看" icon="icon-search" url="dxsActivesCustomController.do?goUpdate" funname="detail" height="720" width="1120"></t:dgToolBar>
+   <%--<t:dgToolBar title="导入" icon="icon-put" funname="ImportXls"></t:dgToolBar>--%>
+   <%--<t:dgToolBar title="导出" icon="icon-putout" funname="ExportXls"></t:dgToolBar>--%>
+   <%--<t:dgToolBar title="模板下载" icon="icon-putout" funname="ExportXlsByT"></t:dgToolBar>--%>
+  </t:datagrid>
+  </div>
+ </div>
+ <script src = "webpage/com/buss/activescustom/dxsActivesCustomList.js"></script>		
+ <script type="text/javascript">
+ $(document).ready(function(){
+ 		//给时间控件加上样式
+ 			$("#dxsActivesCustomListtb").find("input[name='setouttime_begin']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+ 			$("#dxsActivesCustomListtb").find("input[name='setouttime_end']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+ 			$("#dxsActivesCustomListtb").find("input[name='createTime_begin']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+ 			$("#dxsActivesCustomListtb").find("input[name='createTime_end']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+ 			$("#dxsActivesCustomListtb").find("input[name='updateTime_begin']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+ 			$("#dxsActivesCustomListtb").find("input[name='updateTime_end']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+ });
+ 
+//导入
+function ImportXls() {
+	openuploadwin('Excel导入', 'dxsActivesCustomController.do?upload', "dxsActivesCustomList");
+}
+
+//导出
+function ExportXls() {
+	JeecgExcelExport("dxsActivesCustomController.do?exportXls","dxsActivesCustomList");
+}
+
+//模板下载
+function ExportXlsByT() {
+	JeecgExcelExport("dxsActivesCustomController.do?exportXlsByT","dxsActivesCustomList");
+}
+ </script>

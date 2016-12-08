@@ -1,0 +1,158 @@
+- 所有的专场招聘(specialrecruit包下)
+192.168.0.10:8080/dxs-server/recruit/allTheSpecialRecruitment.do?curPage=1&pageSize=3&id=1
+
+    可选参数:id = 专场招聘的ID(根据ID查询对应专场招聘,同时查询所有对应所有专场招聘项),如果id没有值查询所有的专场招聘
+
+    传ID返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "pageCount":1,
+                "pageNo":1,
+                "pageSize":10,
+                "total":2,
+                "result":[
+                    {
+                        "specialRecruitJobVos":[        专场招聘项
+                            {
+                                "id":"1",                       专场招聘项
+                                "srId":"1",                     专场招聘
+                                "srJobName":"岗位名称",         岗位名称
+                                "srJobNum":"5",                 人数
+                                "srJobSalary":"工资待遇",       工资待遇
+                                "srJobAddress":"工作地点",      工作地点
+                                "srJobUnitId":"招聘单位id",     招聘单位id
+                                "srJobUnit":"招聘单位",         招聘单位
+                                "createTime":"2016-07-20 14:23:38",
+                                "updateTime":"2016-07-27 14:23:42",
+                                "isDelete":"0"
+                            }
+                        ],
+                        "specialRecruitVo":{            专场招聘
+                            "id":"1",       专场招聘ID
+                            "spSchool":"北京对外才经贸大学",     学校
+                            "spImgurlFid":null,                  专场缩略图
+                            "spImgurl":null,                     专场图片地址
+                            "spDirection":"招聘专业方向",        招聘专业方向
+                            "spJobNum":"5",         招聘岗位数
+                            "spEducation":"3",      学历层次
+                            "holdDatatime":"2016-07-25 14:55:30",       日期
+                            "holdStartTime"               开始时间
+                            "holdEndTime"                  结束时间
+                            "holdDate":"举办年份",          举办年份
+                            "holdNum":"6",                 举办场次
+                            "spAddress":"详细地址",         详细地址
+                            "createTime":"2016-07-19 14:22:22",
+                            "updateTime":"2016-07-20 14:22:25",
+                            "isDelete":"0"
+                        }
+                    }
+                ]
+            },
+            "attribute":null
+        }
+
+
+        不传ID返回值:
+                {
+                    "success":true,
+                    "statusCode":"200",
+                    "data":{
+                        "pageCount":1,
+                        "pageNo":1,
+                        "pageSize":3,
+                        "total":2,
+                        "result":[
+                            {
+                                "id":"1",
+                                "spSchool":"北京对外才经贸大学",
+                                "spImgurlFid":null,
+                                "spImgurl":null,
+                                "spDirection":"招聘专业方向",
+                                "spJobNum":"5",
+                                "spEducation":"3",
+                                "holdDatatime":"2016-07-25 14:55:30",
+                                "holdDate":"举办年份",
+                                "holdNum":"6",
+                                "spAddress":"详细地址",
+                                "createTime":"2016-07-19 14:22:22",
+                                "updateTime":"2016-07-20 14:22:25",
+                                "isDelete":"0"
+                            },
+                            {
+                                "id":"2",
+                                "spSchool":"东方红风光好",
+                                "spImgurlFid":null,
+                                "spImgurl":null,
+                                "spDirection":null,
+                                "spJobNum":null,
+                                "spEducation":null,
+                                "holdDatatime":null,
+                                "holdDate":null,
+                                "holdNum":null,
+                                "spAddress":null,
+                                "createTime":null,
+                                "updateTime":null,
+                                "isDelete":"0"
+                            }
+
+
+
+
+- 校园招聘专场预约192.168.0.10:8080/dxs-server/recruit/bespeak.do?srId=1&srjId=2&appointmentType=0&srJobUnitId=21
+
+    必要参数:srId = 专场招聘ID      srjId = 专场招聘项ID     appointmentType = 专场招聘类型
+
+    可选参数:srJobUnitId = 招聘单位id
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"请选择预约类型!",
+            "data":null,
+            "attribute":null
+        }
+
+
+- 企业申请参加专场>>选择省份后联动所有的数据
+http://localhost:8080/dxs-server/recruit/number.do?province=...
+
+    必要参数:province=所选省份
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":[
+                {
+                    "id":"2",
+                    "spSchool":"东方红风光好",               学校名称
+                    "spImgurlFid":null,
+                    "spImgurl":null,
+                    "spDirection":"招聘专业方向",             招聘专业方向
+                    "spJobNum":"80",
+                    "spEducation":"4",
+                    "holdDatatime":"2016-08-12 13:10:08",
+                    "holdDate":"举办年份",
+                    "holdNum":"8",
+                    "spAddress":"北京市#海淀区",              详细地址
+                    "createTime":"2016-08-11 13:10:26",
+                    "updateTime":"2016-08-12 13:10:30",
+                    "isDelete":"0"
+                }
+            ],
+            "attribute":null
+        }
+
+
+- 企业申请参加专场>>确认提交
+http://localhost:8080/dxs-server/recruit/enterpriseApplication.do?spDirection=财经系&spSchool=北京对外财经大学&holdNum=6(场次)&privince=北京市&fileId=..
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"保存成功!",
+            "data":null,
+            "attribute":null
+        }

@@ -1,0 +1,537 @@
+- 就业中心>专项就业(无悔的青春 真情的奉献)
+http://192.168.0.120:8080/dxs-server/specialsYouthController/employment.do?type=1&curPage=1&pageSize=10
+
+    必要参数:type = 所属类型(1:三支一扶 2:边去支教 3:志愿西部 4:大学生村官)
+
+    返回值:
+          {
+              "success":true,
+              "statusCode":"200",
+              "data":{
+                  "specialsVos":{
+                      "pageCount":1,
+                      "pageNo":1,
+                      "pageSize":10,
+                      "total":1,
+                      "result":[
+                          {
+                              "id":"1",     专项就业的ID
+                              "introduce":"简绍（三支一扶）",
+                              "videoUrl":"视频地址",
+                              "imgUrl":"缩略图",
+                              "volunteerObj":"志愿者招募对象和条件",
+                              "volunteerJoinType":"招募方式",
+                              "volunteerService":"服务期限",
+                              "volunteerAssessment":"业务指导与监测评估",
+                              "volunteerWorks":"工作时间及工作量",
+                              "volunteerActive":"文化活动安排",
+                              "volunteerTeach":"志愿者培训",
+                              "volunteerManager":"工作点的设置与管理",
+                              "createTime":"2016-08-08 09:57:22",
+                              "updateTime":"2016-08-09 09:57:30",
+                              "isDelete":"0",
+                              "type":"1"
+                          }
+                      ]
+                  },
+                  "specialsYouthVos":[  专项就业>青春无悔
+                      {
+                          "id":"1",
+                          "userId":null,
+                          "type":"1",
+                          "head_img_url":null   头像
+                          "name":"姓名",
+                          "age":"年龄",
+                          "political":"政治面貌",
+                          "education":"学历",
+                          "persentPost":"现在岗位",
+                          "workPlace":"工作地点",
+                          "major":"专业",
+                          "university":"毕业院校",
+                          "motto":"座右铭",
+                          "profile":"个人简介",
+                          "deeds":"优秀事迹",
+                          "sort":"1",
+                          "display_img01_fid":null  风采展示图
+                          "display_img01_url":null  风采展示图地址
+                          "display_img02_fid":null  风采展示图
+                          "display_img02_url":null  风采展示图地址
+                          "display_img03_fid":null  风采展示图
+                          "display_img03_url":null  风采展示图地址
+                          "display_img04_fid":null  风采展示图
+                          "display_img04_url":null  风采展示图地址
+                          "display_img05_fid":null  风采展示图
+                          "display_img05_url":null  风采展示图地址
+                          "createTime":"2016-08-07  17:27:26",
+                          "updateTime":null,
+                          "isDelete":"0"
+                      }
+                  ]
+              },
+              "attribute":null
+          }
+
+
+- 边区支教
+http://localhost:8080/dxs-server/specialsYouthController/teacherSupport.do?curPage=1&pageSize=10&id=1&hiringPlace=...&hiringJob=...
+
+    必要参数:id = 专项就业就业的ID(和type值都可以确定唯一的数据)
+
+    可选参数:======>条件查询    hiringPlace = 支援省份   hiringJob = 志愿项目
+
+    注:该接口只提供大学生村官的的招聘简章信息,不提供文章信息
+
+    返回参数:
+          {
+              "success":true,
+              "statusCode":"200",
+              "data":{
+                  "specialsHiringVos":{
+                      "pageCount":1,
+                      "pageNo":1,
+                      "pageSize":10,
+                      "total":1,
+                      "result":[
+                          {
+                              "id":"1",     专项就业->选聘简章的ID
+                              "specialsId":"1",
+                              "title":"标题",
+                              "introduce":"简介",
+                              "hiringRange":"选聘范围",
+                              "hiringNum":"1", 选聘数量
+                              "hiringMajor":"选聘专业",
+                              "hiringCondition":"选聘条件",
+                              "hiringPlace":"选聘地点",
+                              "hiringNet":"网上报名时间及要求",
+                              "hiringExam":"笔试时间及要求",
+                              "hiringStandard":"资格初审内容及标准",
+                              "hiringInterview":"面试时间及相关事宜",
+                              "hiringPlan":"确定拟聘用人员时间及标准",
+                              "hiringExperience":"体验和心理测试",
+                              "hiringRetest":"资格复审",
+                              "hiringJob":"志愿项目",
+                              "hiringReport":"办理报到手续及签订劳动合同",
+                              "hiringJobTraining":"岗前培训",
+                              "hiringCertiticates":"持证上岗",
+                              "hiringContact":"联系人及联系电话",
+                              "hiringEnclosureFid":"附件",
+                              "hiringEnclosureUrl":"附件地址",
+                              "hiringProject":"选聘项目(预留)",
+                              "publishCompany":"发布单位",
+                              "publishTime":"2016-08-08 17:34:38",
+                              "sort":"1",
+
+                              "createTime":"2016-08-09 17:34:44",
+                              "updateTime":"2016-08-10 17:34:48",
+                              "isDelete":"0"
+                          }
+                      ]
+                  },
+                  "specialsVo":{        专项就业
+                      "id":"1",     专项就业的ID
+                      "introduce":"简绍（三支一扶）",
+                      "videoUrl":"视频地址",
+                      "imgUrl":"缩略图",
+                      "volunteerObj":"志愿者招募对象和条件",
+                      "volunteerJoinType":"招募方式",
+                      "volunteerService":"服务期限",
+                      "volunteerAssessment":"业务指导与监测评估",
+                      "volunteerWorks":"工作时间及工作量",
+                      "volunteerActive":"文化活动安排",
+                      "volunteerTeach":"志愿者培训",
+                      "volunteerManager":"工作点的设置与管理",
+                      "createTime":"2016-08-08 09:57:22",
+                      "updateTime":"2016-08-09 09:57:30",
+                      "isDelete":"0",
+                      "type":"1"
+                  }
+              },
+              "attribute":null
+          }
+
+
+- 大学生村官的文章
+http://localhost:8080/dxs-server/specialsYouthController/villageOfficial.do?curPage=1&pageSize=5&cateLog=1&addressArea=北京市
+
+    必要参数:cateLog = 类型       1:大学生村官政策  2:大学生村官工作  3:大学生村官风采  4:报考条件
+           addressArea = 区域
+
+        返回值:
+              {
+                  "success":true,
+                  "statusCode":"200",
+                  "data":{
+                      "pageCount":1,
+                      "pageNo":1,
+                      "pageSize":5,
+                      "total":3,
+                      "result":[
+                          {
+                              "id":"3", 文章的ID
+                              "specialId":"4",  专项就业的ID
+                              "title":"大学生村官工作(类型为1)",
+                              "autor":"作者",
+                              "sources":"作者",
+                              "publishTime":"2016-08-14 18:49:22",
+                              "addressArea":"区域",
+                              "timeYear":"年份",
+                              "imgUrl":"缩略图",
+                              "videoUrl":"视频地址",
+                              "summary":"简介",
+                              "content":"内容",
+                              "cateLog":"1", 分类
+                              "sort":"3",   编号
+                              "createTime":"2016-08-14 17:08:59",
+                              "updateTime":"2016-08-15 17:09:02",
+                              "isDelete":"0"
+                          }
+                      ]
+                  },
+                  "attribute":null
+              }
+
+
+
+- 大学生村官文章的详情页
+http://localhost:8080/dxs-server/specialsYouthController/articleDetails.do?id=1
+
+    必要参数:id = 专项就业的ID
+
+    返回值:
+          {
+              "success":true,
+              "statusCode":"200",
+              "data":{
+                  "id":"1",     文章的ID
+                  "specialId":"4",  专项就业的ID
+                  "title":"报考条件(类型为1)",
+                  "autor":"作者",
+                  "sources":"作者",
+                  "publishTime":"2016-08-05 18:49:09",
+                  "addressArea":"区域",
+                  "timeYear":"年份",
+                  "imgUrl":"缩略图",
+                  "videoUrl":"视频地址",
+                  "summary":"简介",
+                  "content":"内容",
+                  "cateLog":"1",    类型
+                  "sort":"1",   编号
+                  "createTime":"2016-08-14 17:08:59",
+                  "updateTime":"2016-08-15 17:09:02",
+                  "isDelete":"0"
+              },
+              "attribute":null
+          }
+
+
+- 查询所有的图片集(可有无分页)/如果有ID,根据ID查询详细信息
+// 有分页
+http://localhost:8080/dxs-server/specialsYouthController/atlas.do?curPage=1&pageSize=5
+// 无分页
+http://localhost:8080/dxs-server/specialsYouthController/atlas.do
+
+
+
+    返回值:
+        // 有分页
+          {
+              "success":true,
+              "statusCode":"200",
+              "data":{
+                  "pageCount":2,
+                  "pageNo":1,
+                  "pageSize":5,
+                  "total":5,
+                  "result":[
+                      {
+                          "id":"1",     图片集的ID
+                          "userId":"用户id",      用户ID
+                          "type":"类型",
+                          "title":"标题",
+                          "imgUrl":"http://hongxinguoji.com/group1/M00/00/1A/Zckdh1eJldWAGP8fAAAqB1TTj54486.jpg",       图片地址
+                          "introduce":"简介",
+                          "sort":"1",       编号
+                          "createTime":"2016-08-14 19:59:34",
+                          "updateTime":"2016-08-15 19:59:38",
+                          "isDelete":"0"
+                      }
+                  ]
+              },
+              "attribute":null
+          }
+
+
+        // 无分页
+          {
+              "success":true,
+              "statusCode":"200",
+              "data":[
+                  {
+                      "id":"1",     文章的id
+                      "userId":"用户id",
+                      "type":"类型",
+                      "title":"标题",
+                      "imgUrl":"http://hongxinguoji.com/group1/M00/00/1A/Zckdh1eJldWAGP8fAAAqB1TTj54486.jpg",   图片地址
+                      "introduce":"简介",
+                      "sort":"1",   编号
+                      "createTime":"2016-08-14 19:59:34",
+                      "updateTime":"2016-08-15 19:59:38",
+                      "isDelete":"0"
+                  }
+              ],
+              "attribute":null
+          }
+
+
+- 查询图片集中某一集的所有图片
+http://localhost:8080/dxs-server/specialsYouthController/atlas.do?curPage=1&pageSize=5&id=1
+
+    必要参数: id = 图片集ID
+
+    返回值:
+          {
+              "success":true,
+              "statusCode":"200",
+              "data":[
+                  {
+                      "id":"40288005568c55bb01568c59158e0001",      图片id
+                      "dsyiId":"1",                         图片集id
+                      "imgUrl":"2424242",           图片地址
+                      "sort":"24",                  编号
+                      "createTime":"2016-08-15 11:57:43",
+                      "updateTime":null,
+                      "isDelete":"0"
+                  }
+              ],
+              "attribute":null
+          }
+
+
+
+- 专项就业>边区支教     根据类型查询所有的专项就业>青春无悔
+http://localhost:8080/dxs-server/specialsYouthController/typeYouth.do?curPage=1&pageSize=10&type=1
+
+    必要参数:type = 专向就业类型
+
+    返回值:
+    {
+      "success":true,
+      "statusCode":"200",
+      "data":{
+          "specialsHiringVos":{
+              "pageCount":1,
+              "pageNo":1,
+              "pageSize":10,
+              "total":1,
+              "specialsYouthVos":[  专项就业>青春无悔
+                  {
+                      "id":"1",
+                      "userId":null,
+                      "type":"1",
+                      "head_img_url":null   头像
+                      "name":"姓名",
+                      "age":"年龄",
+                      "political":"政治面貌",
+                      "education":"学历",
+                      "persentPost":"现在岗位",
+                      "workPlace":"工作地点",
+                      "major":"专业",
+                      "university":"毕业院校",
+                      "motto":"座右铭",
+                      "profile":"个人简介",
+                      "deeds":"优秀事迹",
+                      "sort":"1", 编号
+                      "display_img01_fid":null  风采展示图
+                      "display_img01_url":null  风采展示图地址
+                      "display_img02_fid":null  风采展示图
+                      "display_img02_url":null  风采展示图地址
+                      "display_img03_fid":null  风采展示图
+                      "display_img03_url":null  风采展示图地址
+                      "display_img04_fid":null  风采展示图
+                      "display_img04_url":null  风采展示图地址
+                      "display_img05_fid":null  风采展示图
+                      "display_img05_url":null  风采展示图地址
+                      "createTime":"2016-08-07 17:27:26",
+                      "updateTime":null,
+                      "isDelete":"0"
+                  }
+              ]
+          },
+          "attribute":null
+      }
+
+
+
+
+- 专向就业->我要去这里
+http://localhost:8080/dxs-server/specialsYouthController/signUp.do?...
+
+    所传参数:
+          	/**选聘简章id*/
+          	private java.lang.String shId;
+          	/**申请省*/
+          	private java.lang.String objAddressProvince;
+          	/**申请市*/
+          	private java.lang.String objAddressCity;
+          	/**申请项目*/
+          	private java.lang.String objProject;
+          	/**申请类型*/
+          	private java.lang.Integer type;
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"提交成功!",
+            "data":null,
+            "attribute":null
+        }
+
+
+
+- 获取当前用户详细信息(边区支教>我要去这里)
+http://localhost:8080/dxs-server/specialsYouthController/getUserInformation.do
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "age":"24",             当前用户的年龄
+              "userDetailVO":{
+                "id":"ff80818155c47eaa0155c47fca360001",
+                "userId":"ff80818155c47eaa0155c47fc9c90000",
+                "name":"啊",         姓名
+                "headImg":null,
+                "sex":"男",          性别
+                "bodyHight":null,
+                "bodyWeight":null,
+                "borthday":null,
+                "residence":null,
+                "phone":null,                   手机号
+                "email":"412410820@qq.com",
+                "preNative":null,
+                "idcard":"230102199207024125",
+                "qq":null,
+                "msn":null,
+                "schoolName":"北大",              学校名称
+                "schoolAddress":"吃",             学校地址
+                "schoolAdmission":null,
+                "schoolGraduation":null,
+                "schoolGrade":"博2",
+                "schoolMajor":"玩",               专业
+                "schoolEducation":"博士后",        学历
+                "schoolCertificate":null,
+                "hobby":null,
+                "jobSchool":null,
+                "jobSchoolPosition":null,
+                "remarks":null,
+                "createTime":null,
+                "updateTime":1467955799000,
+                "isDelete":0,
+                "userEntity":{
+                    "id":"ff80818155c47eaa0155c47fc9c90000",
+                    "realname":"高卓",
+                    "rolecode":"student",
+                    "mphone":"18945061615",
+                    "pwd":"ba47af00f8410060",
+                    "email":null,
+                    "empname":null,
+                    "empcode":null,
+                    "idcardnumber":"230102199207024125",
+                    "checkstatus":4,
+                    "isdelete":0,
+                    "createtime":1467880556000,
+                    "userCompancyEntity":null
+                }
+            },
+            "attribute":null
+        }
+
+
+- 获取无悔青春的详细信息
+http://localhost:8080/dxs-server/specialsYouthController/youthMessage.do?id=1
+
+    必要参数:  id = 无悔青春的ID
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                  "id":"1",
+                  "userId":null,
+                  "type":"1",
+                  "head_img_url":null   头像
+                  "name":"姓名",
+                  "age":"年龄",
+                  "political":"政治面貌",
+                  "education":"学历",
+                  "persentPost":"现在岗位",
+                  "workPlace":"工作地点",
+                  "major":"专业",
+                  "university":"毕业院校",
+                  "motto":"座右铭",
+                  "profile":"个人简介",
+                  "deeds":"优秀事迹",
+                  "sort":"1", 编号
+                  "display_img01_fid":null  风采展示图
+                  "display_img01_url":null  风采展示图地址
+                  "display_img02_fid":null  风采展示图
+                  "display_img02_url":null  风采展示图地址
+                  "display_img03_fid":null  风采展示图
+                  "display_img03_url":null  风采展示图地址
+                  "display_img04_fid":null  风采展示图
+                  "display_img04_url":null  风采展示图地址
+                  "display_img05_fid":null  风采展示图
+                  "display_img05_url":null  风采展示图地址
+                  "createTime":"2016-08-07 17:27:26",
+                  "updateTime":null,
+                  "isDelete":"0"
+            },
+            "attribute":null
+        }
+
+
+
+- 选聘简章的详细信息
+http://localhost:8080/dxs-server/specialsYouthController/hiringInfo.do?id=1
+
+    必要参数:id = 选聘简章的ID
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "id":"1",
+                "specialsId":"1",
+                "title":"标题",
+                "introduce":"简介",
+                "hiringJob":"小学",   志愿项目
+                "hiringRange":"选聘范围",
+                "hiringNum":"1",选聘数量
+                "hiringMajor":"选聘专业",
+                "hiringCondition":"选聘条件",
+                "hiringPlace":"甘肃", 支援省份
+                "hiringNet":"网上报名时间及要求",
+                "hiringExam":"笔试时间及要求",
+                "hiringStandard":"资格初审内容及标准",
+                "hiringInterview":"面试时间及相关事宜",
+                "hiringPlan":"确定拟聘用人员时间及标准",
+                "hiringExperience":"体验和心理测试",
+                "hiringRetest":"资格复审",
+                "hiringReport":"办理报到手续及签订劳动合同",
+                "hiringJobTraining":"岗前培训",
+                "hiringCertiticates":"持证上岗",
+                "hiringContact":"联系人及联系电话",
+                "hiringEnclosureFid":"附件",
+                "hiringEnclosureUrl":"附件地址",
+                "hiringProject":"选聘项目(预留)",
+                "publishCompany":"发布单位",
+                "publishTime":"2016-08-08 17:34:38",
+                "sort":"1",
+                "createTime":"2016-08-09 17:34:44",
+                "updateTime":"2016-08-10 17:34:48",
+                "isDelete":"0"
+            },
+            "attribute":null
+        }

@@ -1,0 +1,2232 @@
+- 活动中心中的精彩回顾活动
+http://192.168.0.10:8080/dxs-server/actives/wonderfulActivitites.do?curPage=1&pageSize=10
+
+    返回值:{
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "pageCount": 1,
+                "pageNo": 1,
+                "pageSize": 50,
+                "total": 4,
+                "result": [
+                    {
+                        "userCount": 0,
+                        "active": {
+                            "id": "8a2c9a9855edcbcf0155ede93c7f002c",   活动的id
+                            "activeCatelogId": "3",     活动分类的id
+                            "activeCatelogName": "专题活动",    活动名称
+                            "pid": "0",     菜单类型
+                            "activeCatelogImg": null,   活动种类配图
+                            "activeCatelogDescribe": null,  活动种类的描述
+                            "activeCatelogSort": null,  活动种类的排序
+                            "activeTitle": "中国儿童基金会联合鸿鑫国际启动“春蕾午餐计划”关爱贫困女童",     活动标题
+                            "displayMenu": "",      展示菜单
+                            "activeAddress": "北京市#",    活动地点
+                            "hostUnit": "北京鸿鑫国际集团有限公司",     主办单位
+                            "limitedNumber": "",         限报人数
+                            "histaryDate": "2011",      精彩回顾
+                            "deadlineDate": "2016-07-26 00:00:00",      报名截止时间
+                            "activeStateTime": "2016-07-27 00:00:00",       活动开始时间
+                            "activeEndTime": "2016-07-30 00:00:00",     活动结束时间
+                            "activeUsertypeId": "",     活动对象
+                            "activeContent": ""      具体活动内容
+                            "activePrice": "",      价钱
+                            "isCharge": null,       是否收费 0收费 1不收费
+                            "maxAccountCount": "",      可使用鸿鑫币数量
+                            "publishTime": "2016-07-15 17:35:33",
+                            "activeEditor": ""      发布时间
+                        },
+                        "activeStatu": "报名中",       活动进度
+                        "catelogName": "专题活动"       活动类型
+                    }
+                ]
+            },
+            "attribute": null
+        }
+
+- 活动中心首页条件查询
+http://192.168.0.10:8080/dxs-server/actives/activityList.do?curPage=1&pageSize=10&pid=1&histaryDate=2011&schedule=进行中&activeAddress=北京市&city=海淀
+
+    必要参数:activeCatelogId = 活动分类中子分类的ID(和pid=活动分类的ID选其一不可同时传参)
+
+    可选参数:activeAddress=活动地址     schedule = 活动进度     activeCatelogId = 活动分类中子分类的ID    pid = 活动分类    histaryDate = 精彩回顾
+
+    注:schedule=进行中不可以在activeAddress=北京市#的后边,如果放到后边schedule的条件是无效的
+
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "pageCount": 1,
+                "pageNo": 1,
+                "pageSize": 50,
+                "total": 4,
+                "result": [
+                    {
+                        "userCount": 0,
+                        "active": {
+                            "id": "8a2c9a9855edcbcf0155ede93c7f002c",   活动的id
+                            "activeCatelogId": "3",     活动分类的id
+                            "activeCatelogName": "专题活动",    活动名称
+                            "pid": "0",     菜单类型
+                            "activeCatelogImg": null,   活动种类配图
+                            "activeCatelogDescribe": null,  活动种类的描述
+                            "activeCatelogSort": null,  活动种类的排序
+                            "activeTitle": "中国儿童基金会联合鸿鑫国际启动“春蕾午餐计划”关爱贫困女童",     活动标题
+                            "displayMenu": "",      展示菜单
+                            "activeContentImg"null,
+                            "activeAddress": "北京市#",    活动地点
+                            "hostUnit": "北京鸿鑫国际集团有限公司",     主办单位
+                            "limitedNumber": "",         限报人数
+                            "histaryDate": "2011",      精彩回顾
+                            "deadlineDate": "2016-07-26 00:00:00",      报名截止时间
+                            "activeStateTime": "2016-07-27 00:00:00",       活动开始时间
+                            "activeEndTime": "2016-07-30 00:00:00",     活动结束时间
+                            "activeUsertypeId": "",     活动对象
+                            "activeContent": ""      具体活动内容
+                            "activePrice": "",      价钱
+                            "isCharge": null,       是否收费 0收费 1不收费
+                            "maxAccountCount": "",      可使用鸿鑫币数量
+                            "publishTime": "2016-07-15 17:35:33",       发布时间
+                            "activeEditor": ""      编辑人
+                            "IsCollention":"已关注"
+                        },
+                        "activeStatu": "报名中",       活动进度
+                        "activeStatu": "报名中",       活动进度
+                        "catelogName": "专题活动"       活动类型
+                    }
+                ]
+            },
+            "attribute": null
+        }
+
+
+- 活动中心中的活动类型的下拉列表
+http://192.168.0.10:8080/dxs-server/actives/activityType.do?id=1
+
+    必要参数:id = 活动分类的ID(例如:精品活动/主题活动...)
+
+    返回值:
+            {
+                "success":true,
+                "statusCode":"200",
+                "data":[
+                    {
+                        "id":"4",       活动分类ID
+                        "activeCatelogName":"出国游学",     活动名称
+                        "pid":"1",      菜单类型
+                        "activeCatelogImg":null,    活动种类配图
+                        "activeCatelogDescribe":null,   活动种类的描述
+                        "activeCatelogSort":null    活动种类的排序
+                    }
+                ],
+                "attribute":null
+            }
+
+- 精彩回顾下拉选
+http://192.168.0.10:8080/dxs-server/actives/wonderfulActivities.do
+
+        返回值:
+            {
+                "success": true,
+                "statusCode": "200",
+                "data": {
+                    "pageCount": 1,
+                    "pageNo": 1,
+                    "pageSize": 50,
+                    "total": 4,
+                    "result": [
+                        {
+                            "userCount": 0,
+                            "active": {
+                                "id": "8a2c9a9855edcbcf0155ede93c7f002c",   活动的id
+                                "activeCatelogId": "3",     活动分类的id
+                                "activeCatelogName": "专题活动",    活动名称
+                                "pid": "0",     菜单类型
+                                "activeCatelogImg": null,   活动种类配图
+                                "activeCatelogDescribe": null,  活动种类的描述
+                                "activeCatelogSort": null,  活动种类的排序
+                                "activeTitle": "中国儿童基金会联合鸿鑫国际启动“春蕾午餐计划”关爱贫困女童",     活动标题
+                                "displayMenu": "",      展示菜单
+                                "activeAddress": "北京市#",    活动地点
+                                "hostUnit": "北京鸿鑫国际集团有限公司",     主办单位
+                                "limitedNumber": "",         限报人数
+                                "histaryDate": "2011",      精彩回顾
+                                "deadlineDate": "2016-07-26 00:00:00",      报名截止时间
+                                "activeStateTime": "2016-07-27 00:00:00",       活动开始时间
+                                "activeEndTime": "2016-07-30 00:00:00",     活动结束时间
+                                "activeUsertypeId": "",     活动对象
+                                "activeContent": ""      具体活动内容
+                                "activePrice": "",      价钱
+                                "isCharge": null,       是否收费 0收费 1不收费
+                                "maxAccountCount": "",      可使用鸿鑫币数量
+                                "publishTime": "2016-07-15 17:35:33",
+                                "activeEditor": ""      发布时间
+                            },
+                            "activeStatu": "报名中",       活动进度
+                            "catelogName": "专题活动"       活动类型
+                        }
+                    ]
+                },
+                "attribute": null
+            }
+
+
+- 活动区域
+http://192.168.0.10:8080/dxs-server/actives/activityRegion.do
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":[
+                {
+                    "field3":"130000",
+                    "field2":"石家庄市",
+                    "field1":"130100",
+                    "field0":"5"
+                },
+                {
+                    "field3":"140000",
+                    "field2":"太原市",
+                    "field1":"140100",
+                    "field0":"16"
+                },
+                {
+                    "field3":"210000",
+                    "field2":"沈阳市",
+                    "field1":"210100",
+                    "field0":"39"
+                },
+                {
+                    "field3":"220000",
+                    "field2":"吉林市",
+                    "field1":"220200",
+                    "field0":"54"
+                },
+                {
+                    "field3":"230000",
+                    "field2":"哈尔滨市",
+                    "field1":"230100",
+                    "field0":"62"
+                },
+                {
+                    "field3":"320000",
+                    "field2":"南京市",
+                    "field1":"320100",
+                    "field0":"77"
+                },
+                {
+                    "field3":"370000",
+                    "field2":"济南市",
+                    "field1":"370100",
+                    "field0":"138"
+                },
+                {
+                    "field3":"410000",
+                    "field2":"郑州市",
+                    "field1":"410100",
+                    "field0":"155"
+                },
+                {
+                    "field3":"420000",
+                    "field2":"武汉市",
+                    "field1":"420100",
+                    "field0":"172"
+                },
+                {
+                    "field3":"430000",
+                    "field2":"长沙市",
+                    "field1":"430100",
+                    "field0":"186"
+                },
+                {
+                    "field3":"440000",
+                    "field2":"深圳市",
+                    "field1":"440300",
+                    "field0":"202"
+                },
+                {
+                    "field3":"510000",
+                    "field2":"成都市",
+                    "field1":"510100",
+                    "field0":"241"
+                },
+                {
+                    "field3":"610000",
+                    "field2":"西安市",
+                    "field1":"610100",
+                    "field0":"294"
+                },
+                {
+                    "field3":"620000",
+                    "field2":"兰州市",
+                    "field1":"620100",
+                    "field0":"304"
+                },
+                {
+                    "field2":"110000",
+                    "field1":"北京市",
+                    "field0":"1"
+                },
+                {
+                    "field2":"120000",
+                    "field1":"天津市",
+                    "field0":"2"
+                },
+                {
+                    "field2":"310000",
+                    "field1":"上海市",
+                    "field0":"9"
+                },
+                {
+                    "field2":"500000",
+                    "field1":"重庆市",
+                    "field0":"22"
+                }
+            ],
+            "attribute":null
+        }
+
+
+// ======================================================名企参观=========================================
+
+- 活动中心中名企参观的详情页
+http://192.168.0.10:8080/dxs-server/actives/eventDetails.do?id=402880e555edaed40155edd58ec6001c
+
+    必要参数:id = 活动的ID
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                 "activesCompaniesVo": {        活动中心->名企参观
+                            "id": "1",
+                            "companyUserId": "用户id",
+                            "activeId": "8a2c9a985611871001561201952b0095",         活动的ID
+                            "companyAddress": "名企所属地",
+                            "busNum": "大巴车牌号",
+                            "companyName": "参观企业",
+                            "companyPropress": "参观流程",
+                            "companyNotes": "注意事项",
+                            "seeFree": "123",       参观费用
+                            "createTime": "2016-08-19 15:45:28",
+                            "updateTime": null,
+                            "isDelete": "0"
+                        },
+                "userCount": 1,
+                "activessVO": {
+                    "id": "402880e555edaed40155edd58ec6001c",                   活动的ID
+                    "activeCatelogId": "40288020550a9c4101550a9e990c0001",      活动分类的ID
+                    "activeCatelogName": "企业文化",        活动分类名称
+                    "pid": "1",                             活动类型中类型的ID
+                    "activeCatelogImg": "http://www.junshixly.cn/upload/images/422441046.jpg",                                  活动种类配图
+                    "activeCatelogDescribe": "诶福爱就疯狂的撒加路费传，女的尽快付款爱上开了房间诶就发了多少积分可垃圾",        活动种类描述
+                    "activeCatelogSort": "2",           活动排序
+                    "activeTitle": "ddfsf",             活动标题
+                    "displayMenu": "fgfd",              展示菜单
+                    "activeImage": "http://hongxinguoji.com/group1/M00/00/19/Zckdh1eIqZaATci-AAEjY-BM_AY458.jpg",               缩略图
+                    "activeAddress": "",        活动地点
+                    "hostUnit": "",             主办单位
+                    "limitedNumber": "",        限报人数
+                    "histaryDate": "",          精彩回顾
+                    "deadlineDate": null,       截止报名时间
+                    "activeStateTime": null,    活动开始时间
+                    "activeEndTime": null,      活动结束时间
+                    "activeUsertypeId": "",     活动对象
+                    "activeContent": "dfg",     具体活动内容
+                    "activePrice": "",          价钱
+                    "isCharge": null,           是否收费 0收费 1不收费
+                    "maxAccountCount": "",      可使用鸿鑫币数量
+                    "publishTime": "2016-07-15 17:14:03",           活动发布时间
+                    "activeEditor": ""          编辑人
+                },
+                "isCollention": "已关注",
+                "recommend": "推荐报名"
+            },
+            "attribute": null
+        }
+
+
+
+- 名企参观列表页
+http://localhost:8080/dxs-server/ActivesCompaniesController/application.do?pageNo=1&pageSize=3
+
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "pageCount": 1,
+                "pageNo": 1,
+                "pageSize": 3,
+                "total": 1,
+                "result": [
+                    {
+                        "activesCompaniesVo": {
+                            "id": "4028800256bf6a630156bf8c7c46001f",
+                            "companyUserId": "4",
+                            "activeId": "1",
+                            "images": "http://hongxinguoji.com/group1/M00/00/36/Zckdh1e-WRmAZsAKAAAgIsu8dW8692.jpg#http://hongxinguoji.com/group1/M00/00/36/Zckdh1e-WSyACoz9AAA522y_b0k199.jpg#http://hongxinguoji.com/group1/M00/00/36/Zckdh1e-WTKAdsXoAAAqB1TTj54415.jpg#",
+                            "companyAddress": "顶顶顶顶顶",
+                            "busNum": "",
+                            "companyName": "",
+                            "companyPropress": "",
+                            "companyNotes": "",
+                            "seeFree": "0.00",
+                            "createTime": "2016-08-25 10:34:30",
+                            "updateTime": "2016-08-25 10:34:30",
+                            "isDelete": "0"
+                        },
+                        "activessVO": {
+                            "id": "1",
+                            "activeCatelogId": "9",
+                            "activeImage": "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                            "activeContentImg": "",
+                            "activeTitle": "志岗(游学首页中当前热门游学路线)",
+                            "displayMenu": "当前热门游学路线",
+                            "activeAddress": "",
+                            "hostUnit": "东方闪电",
+                            "limitedNumber": "",
+                            "regNumbers": "0",
+                            "histaryDate": "",
+                            "publishTime": "2016-06-26 16:24:52",
+                            "deadlineDate": "2016-07-16 18:05:10",
+                            "activeStateTime": "2016-07-06 09:07:12",
+                            "activeEndTime": "2016-07-20 09:07:17",
+                            "activeUsertypeId": "高中",
+                            "activeContent": "飞机飞机拉速度就覅额几点见覅姐夫在第几集流程十大见覅结女款的经济时代市领导及覅而焦急山东科技非积分贷款及覅额就放假啊安山东科技覅额就分散阿克江地方尐家军",
+                            "activePrice": "127",
+                            "isCharge": "1",
+                            "maxAccountCount": "30",
+                            "giftAccountCount": "",
+                            "activeEditor": "",
+                            "remarks": "",
+                            "sctiveType2": "1",
+                            "sctiveType3": null,
+                            "setOutTime": "",
+                            "setOutAddress": "深圳",
+                            "activeCountry": "美国",
+                            "activesNum": "20",
+                            "activesCharacteristics": "阿士大夫撒旦法师打发士大夫撒旦法",
+                            "createTime": "2016-08-16 11:05:11",
+                            "updateTime": "2016-08-26 08:46:59",
+                            "isDelete": "0"
+                        }
+                    }
+                ]
+            },
+            "attribute": null
+        }
+
+
+- 名企参观条件查询
+localhost:8080/dxs-server/ActivesCompaniesController/application.do?pageNo=1&pageSize=3&provincial=黑龙江省&city=佳木斯市
+
+    可选参数:provincial = 省     city = 市
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "pageCount": 1,
+                "pageNo": 1,
+                "pageSize": 3,
+                "total": 1,
+                "result": [
+                    {
+                        "field5": "",						// 先报人数
+                        "field4": "2016-08-11 14:29:54.0",	// 活动开始时间
+                        "field3": "沈阳机床",				// 企业名称
+                        "field2": "沈阳",					// 企业所属地
+                        "field7": "1",						//
+                        "field6": "1",						//
+                        "field1": "ERW00696",				// 大巴车牌号
+                        "field0": "8a2c9a9856c9b3480156d5011c280229"		// 活动ID
+                    }
+                ]
+            },
+            "attribute": null
+        }
+
+
+
+
+// ==================================校园赛事的详情页面===================================================
+
+
+- 校园赛事的列表页和其他活动的列表页的接口是一样的
+
+    校园赛事的类型ID为:10
+
+
+- 校园赛事的详情页面
+http://localhost:8080/dxs-server/dxsActivesMathch/detailed.do?activeId=402880ec5649f32e01564ab5f8330051
+
+    必要参数:activeId = 活动的ID
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":[
+                {
+                    "activessVO":{      // 活动
+                        "id": "402880e555edaed40155edd58ec6001c",                   活动的ID
+                        "activeCatelogId": "40288020550a9c4101550a9e990c0001",      活动分类的ID
+                        "activeCatelogName": "企业文化",        活动分类名称
+                        "pid": "1",                             活动类型中类型的ID
+                        "activeCatelogImg": "http://www.junshixly.cn/upload/images/422441046.jpg",                                  活动种类配图
+                        "activeCatelogDescribe": "诶福爱就疯狂的撒加路费传，女的尽快付款爱上开了房间诶就发了多少积分可垃圾",        活动种类描述
+                        "activeCatelogSort": "2",           活动排序
+                        "activeTitle": "ddfsf",             活动标题
+                        "displayMenu": "fgfd",              展示菜单
+                        "activeImage": "http://hongxinguoji.com/group1/M00/00/19/Zckdh1eIqZaATci-AAEjY-BM_AY458.jpg",               缩略图
+                        "activeAddress": "",        活动地点
+                        "hostUnit": "",             主办单位
+                        "limitedNumber": "",        限报人数
+                        "histaryDate": "",          精彩回顾
+                        "deadlineDate": null,       截止报名时间
+                        "activeStateTime": null,    活动开始时间
+                        "activeEndTime": null,      活动结束时间
+                        "activeUsertypeId": "",     活动对象
+                        "activeContent": "dfg",     具体活动内容
+                        "activePrice": "",          价钱
+                        "isCharge": null,           是否收费 0收费 1不收费
+                        "maxAccountCount": "",      可使用鸿鑫币数量
+                        "publishTime": "2016-07-15 17:14:03",           活动发布时间
+                        "activeEditor": ""          编辑人
+                    }
+                },
+                {
+                    "activesMathchVo":{     // 校园赛事
+                        "id":"4028801b56d56fa40156d573c7790001",            // 校园赛事的详情页
+                        "activeId":"402880ec5649f32e01564ab5f8330051",      // 活动的ID
+                        "coOrganizer":"和当天认购 ",                          // 协办单位
+                        "undertakingUnit":"会发光",                          // 承办单位
+                        "supportingUnit":"大概",                             // 赞助单位
+                        "supportUnit":"",                                   // 支持单位
+                        "mediaUnit":"大概",                                  // 媒体单位
+                        "objectRequired":"师傅告诉",                          // 参赛对象及要求
+                        "guide":"发光时代",                                   // 报名指南
+                        "origanze":"",                                      // 赛事安排
+                        "news":"大概",                                       // 赛事动态
+                        "videoUrl":"",                                      // 赛事宣传片
+                        "imgurls":"",                                       // 精彩回放
+                        "fid":"",                                           // 资料下载(预留)
+                        "timeFlow":"",                                      // 时间流程图
+                        "others":"",                                        // 其他
+                        "createTime":"2016-08-29 16:39:09",
+                        "updateTime":"2016-08-29 17:01:45",
+                        "isDelete":"0",
+                        "picture": [   // 轮播图
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png"
+                        ]
+                    }
+                }
+            ],
+            "attribute":null
+        }
+
+
+- 查询赛事资料下载的URL
+http://localhost:8080/dxs-server/dxsActivesMathch/fileDowload.do?outId=4028800c55c4b1a50155c4b935b50007&name=http://localhost:8080/dxs-server/dxsActivesMathch/fileDowload.do?outId=4028800c55c4b1a50155c4b935b50007&name=接口文档
+
+    必要参数:outId = 校园赛事的ID    name = 下载项名称
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":[
+                {
+                    "field2":"接口文档6.29.txt",		// 文件名称
+                    "field1":"4028800c55c4b1a50155c4b926d00006",	// 文件的ID
+                    "field0":"http://hongxinguoji.com/group1/M00/00/14/Zckdh1d-		I0uAFaYSAAGKj7R_xOo464.txt"		// 下载地址
+                }
+            ],
+            "attribute":null
+        }
+
+
+
+// =========================================校园联谊/爱好者同行===========================================
+
+- 校园联谊/爱好者同行的列表页和其他活动的列表页的接口是一样的
+http://localhost:8080/dxs-server/actives/activityList.do?curPage=1&pageSize=10&activeCatelogId=11(12)
+    校园联谊类型ID为:11/爱好者同行类型ID为:12
+
+    返回值:
+         {
+             "success": true,
+             "statusCode": "200",
+             "data": {
+                 "pageCount": 1,
+                 "pageNo": 1,
+                 "pageSize": 10,
+                 "total": 1,
+                 "result": [
+                     {
+                         "userCount": "65",
+                         "activesFriendshipVo": {
+                             "id":"4028801b56d4d56b0156d5061d0c0002",             // 校园联谊/爱好者同行的ID
+         					"activeId":"8a2c9a9856c9b3480156d5011c280229",       // 活动的ID
+         					"coOrganizer":"打发斯蒂芬 ",                         // 协办单位
+         					"undertakingUnit":"二套房个人",                      // 承办单位
+         					"supportingUnit":"斯蒂芬",                           // 赞助单位
+         					"supportUnit":"的发GV的",                            // 支持单位
+         					"mediaUnit":"的发官方",                              // 媒体单位
+         					"hostProvinces":"山东省",                            // 举办省份
+         					"schoolName": null,				                    // 学校
+         					"timeFlow": null,				                    // 时间流程图
+         					"activityFlow":"反对个人",                           // 活动流程
+         					"objectRequired":"个人而过",                         // 参赛对象及要求
+         					"imgUrls":"33",                                      // 精彩回放
+         					"others":"反对个人",                                 // 其他
+         					"createTime":"2016-08-29 14:39:22",
+         					"updateTime":"2016-08-29 14:50:22",
+         					"isDelete":"0"
+                         },
+                         "active": {
+                             "activeCatelogId": "11",
+                             "activeCatelogName": "校园联谊",
+                             "pid": "2",
+                             "activeCatelogImg": null,
+                             "activeCatelogDescribe": null,
+                             "activeCatelogSort": null,
+                             "id": "8a2c9a9856118710015616a5234a015d",
+                             "activeTitle": "多校社团联合素质拓展活动",
+                             "displayMenu": "热门活动",
+                             "activeContentImg": "http://hongxinguoji.com/group1/M00/00/31/Zckdh1ey9_yATgwAAASdEN4UvMA711.png",
+                             "activeAddress": "北京市#市辖区#石景山区#北方工业大学#",
+                             "hostUnit": "全国大学生就业创业中心",
+                             "limitedNumber": "65",
+                             "regNumbers": "65",
+                             "histaryDate": "",
+                             "deadlineDate": "2016-06-22 00:00:00",
+                             "activeStateTime": "2016-07-06 00:00:00",
+                             "activeEndTime": "2016-07-08 00:00:00",
+                             "activeUsertypeId": "",
+                             "activeContent": "",
+                             "activeImage": "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTG-OAWiv6AAOGtnVu0lc875.png",
+                             "activePrice": "0",
+                             "isCharge": null,
+                             "maxAccountCount": "",
+                             "giftAccountCount": null,
+                             "publishTime": "2016-06-10 00:00:00",
+                             "activeEditor": "瑞雪",
+                             "remarks": "",
+                             "sctiveType2": "1",
+                             "sctiveType3": "1",
+                             "setOutTime": "",
+                             "setOutAddress": "",
+                             "activeCountry": "美国",
+                             "activesNum": null,
+                             "activesCharacteristics": "",
+                             "createTime": "2016-07-23 15:25:36",
+                             "updateTime": "2016-08-26 08:41:08",
+                             "isDelete": "0",
+                             "isCollention": "未关注"
+                         },
+                         "activeStatu": "已结束",
+                         "catelogName": "校园联谊"
+                     }
+                 ]
+             },
+             "attribute": null
+         }
+
+
+
+
+
+- 校园联谊/爱好者同行的详情页
+http://localhost:8080/dxs-server/dxsActivesFriendship/detailed.do?activeId=8a2c9a9856c9b3480156d5011c280229
+
+    必要参数:activeId = 活动的ID
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":[
+                {
+                    "activessVO":{          // 活动
+                        "id": "402880e555edaed40155edd58ec6001c",                   活动的ID
+                        "activeCatelogId": "40288020550a9c4101550a9e990c0001",      活动分类的ID
+                        "activeCatelogName": "企业文化",        活动分类名称
+                        "pid": "1",                             活动类型中类型的ID
+                        "activeCatelogImg": "http://www.junshixly.cn/upload/images/422441046.jpg",                                  活动种类配图
+                        "activeCatelogDescribe": "诶福爱就疯狂的撒加路费传，女的尽快付款爱上开了房间诶就发了多少积分可垃圾",        活动种类描述
+                        "activeCatelogSort": "2",           活动排序
+                        "activeTitle": "ddfsf",             活动标题
+                        "displayMenu": "fgfd",              展示菜单
+                        "activeImage": "http://hongxinguoji.com/group1/M00/00/19/Zckdh1eIqZaATci-AAEjY-BM_AY458.jpg",               缩略图
+                        "activeAddress": "",        活动地点
+                        "hostUnit": "",             主办单位
+                        "limitedNumber": "",        限报人数
+                        "histaryDate": "",          精彩回顾
+                        "deadlineDate": null,       截止报名时间
+                        "activeStateTime": null,    活动开始时间
+                        "activeEndTime": null,      活动结束时间
+                        "activeUsertypeId": "",     活动对象
+                        "activeContent": "dfg",     具体活动内容
+                        "activePrice": "",          价钱
+                        "isCharge": null,           是否收费 0收费 1不收费
+                        "maxAccountCount": "",      可使用鸿鑫币数量
+                        "publishTime": "2016-07-15 17:14:03",           活动发布时间
+                        "activeEditor": ""          编辑人
+                    }
+                },
+                {
+                    "activesFriendshipVo":{     // 校园联谊/爱好者同行
+                        "id":"4028801b56d4d56b0156d5061d0c0002",            // 校园联谊/爱好者同行的ID
+                        "activeId":"8a2c9a9856c9b3480156d5011c280229",      // 活动的ID
+                        "coOrganizer":"打发斯蒂芬 ",                          // 协办单位
+                        "undertakingUnit":"二套房个人",                       // 承办单位
+                        "supportingUnit":"斯蒂芬",                           // 赞助单位
+                        "supportUnit":"的发GV的",                            // 支持单位
+                        "mediaUnit":"的发官方",                              // 媒体单位
+                        "hostProvinces":"山东省",                            // 举办省份
+                        "activityFlow":"反对个人",                           // 活动流程
+                        "objectRequired":"个人而过",                         // 参赛对象及要求
+                        "imgUrls":"33",                                    // 精彩回放
+                        "others":"反对个人",                                 // 其他
+                        "createTime":"2016-08-29 14:39:22",
+                        "updateTime":"2016-08-29 14:50:22",
+                        "isDelete":"0",
+                        "picture": [   // 轮播图
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png"
+                        ]
+                    }
+                }
+            ],
+            "attribute":null
+        }
+
+
+
+// ==============================================书画巡展==================================================
+
+- 书画巡展的列表页和其他活动的列表页的接口是一样的
+
+    书画巡展活动类型的id为:13
+
+- 书画巡展的详情页
+http://localhost:8080/dxs-server/dxsActivesPainting/detailed.do?activeId=8a2c9a9856c9b3480156d5011c280229
+
+    必要参数:activeId = 活动的ID
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":[
+                {
+                    "activessVO":{      // 活动
+                        "id": "402880e555edaed40155edd58ec6001c",                   活动的ID
+                        "activeCatelogId": "40288020550a9c4101550a9e990c0001",      活动分类的ID
+                        "activeCatelogName": "企业文化",        活动分类名称
+                        "pid": "1",                             活动类型中类型的ID
+                        "activeCatelogImg": "http://www.junshixly.cn/upload/images/422441046.jpg",                                  活动种类配图
+                        "activeCatelogDescribe": "诶福爱就疯狂的撒加路费传，女的尽快付款爱上开了房间诶就发了多少积分可垃圾",        活动种类描述
+                        "activeCatelogSort": "2",           活动排序
+                        "activeTitle": "ddfsf",             活动标题
+                        "displayMenu": "fgfd",              展示菜单
+                        "activeImage": "http://hongxinguoji.com/group1/M00/00/19/Zckdh1eIqZaATci-AAEjY-BM_AY458.jpg",               缩略图
+                        "activeAddress": "",        活动地点
+                        "hostUnit": "",             主办单位
+                        "limitedNumber": "",        限报人数
+                        "histaryDate": "",          精彩回顾
+                        "deadlineDate": null,       截止报名时间
+                        "activeStateTime": null,    活动开始时间
+                        "activeEndTime": null,      活动结束时间
+                        "activeUsertypeId": "",     活动对象
+                        "activeContent": "dfg",     具体活动内容
+                        "activePrice": "",          价钱
+                        "isCharge": null,           是否收费 0收费 1不收费
+                        "maxAccountCount": "",      可使用鸿鑫币数量
+                        "publishTime": "2016-07-15 17:14:03",           活动发布时间
+                        "activeEditor": ""          编辑人
+                    }
+                },
+                {
+                    "activesPaintingVo":{       // 书画巡展
+                        "id":"1",
+                        "activeId":"1",
+                        "coOrganizer":"协办单位",
+                        "undertakingUnit":"承办单位",
+                        "supportingUnit":"赞助单位",
+                        "supportUnit":"支持单位",
+                        "mediaUnit":"媒体单位",
+                        "hostProvinces":"举办省份",
+                        "activityFlow":"活动流程",
+                        "objectRequired":"参赛对象及要求",
+                        "imgUrls":"精彩回放",
+                        "timeFlows":"时间流程",
+                        "others":"其他",
+                        "catalogChilds":"子分类",
+                        "sendEmail":"邮箱",
+                        "emailStyle":"邮件格式",
+                        "sendAddress":"快递地址",
+                        "createTime":"2016-08-30 13:58:59",
+                        "updateTime":"2016-09-01 13:59:03",
+                        "isDelete":"0",
+                        "picture": [   // 轮播图
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                            "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png"
+                        ]
+                    }
+                }
+            ],
+            "attribute":null
+        }
+
+
+- 查询提示框中的分类和报名费
+http://localhost:8080/dxs-server/dxsActivesPainting/spilt.do?id=4028803e56e4802e0156e49353450018
+
+    必要参数:id = 书画巡展的ID
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":[
+                {
+                    "classify":"国画",        // 分类
+                    "entryFee":"20"          // 报名费
+                },
+                {
+                    "classify":"油画",
+                    "entryFee":"30"
+                }
+            ],
+            "attribute":null
+        }
+
+
+
+// =============================================周末旅行===================================================
+
+- 周末旅行列表页和其他活动的列表页的接口是一样的
+http://localhost:8080/dxs-server/actives/activityList.do?curPage=1&pageSize=10&activeCatelogId=14
+    周末旅行活动类型的id为:14
+
+    返回值:
+         {
+             "success": true,
+             "statusCode": "200",
+             "data": {
+                 "pageCount": 1,
+                 "pageNo": 1,
+                 "pageSize": 10,
+                 "total": 3,
+                 "result": [
+                     {
+                         "userCount": "20",
+                         "activesWeekVo": {
+                             "id": "2",
+                             "activeId": "16",
+                             "coOrganizer": "协办单位(YZG)",
+                             "undertakingUnit": "承办单位",
+                             "supportingUnit": "赞助单位",
+                             "supportUnit": "支持单位",
+                             "mediaUnit": "媒体单位",
+                             "schoolName": "学校",
+                             "catalogChildren": "子分类(预留)",
+                             "activeSchedule": "活动日程",
+                             "objectRequired": "参加对象及要求",
+                             "areaName": "区域",
+                             "imgUrls": "精彩回放",
+                             "others": "其他",
+                             "createTime": "2016-08-30 11:43:29",
+                             "updateTime": "2016-09-03 11:43:26",
+                             "isDelete": "0"
+                         },
+                         "active": {
+                             "activeCatelogId": "14",
+                             "activeCatelogName": "周末旅行",
+                             "pid": "2",
+                             "activeCatelogImg": null,
+                             "activeCatelogDescribe": null,
+                             "activeCatelogSort": null,
+                             "id": "16",
+                             "activeTitle": "携程旅游网创业路演活动",
+                             "displayMenu": "",
+                             "activeContentImg": "",
+                             "activeAddress": "北京市#市辖区#朝阳区##",
+                             "hostUnit": "全国大学生创业就业中心",
+                             "limitedNumber": "20",
+                             "regNumbers": "20",
+                             "histaryDate": "",
+                             "deadlineDate": "2016-07-16 18:05:10",
+                             "activeStateTime": "2016-07-20 09:07:12",
+                             "activeEndTime": "2016-07-20 16:07:17",
+                             "activeUsertypeId": "大学生",
+                             "activeContent": "",
+                             "activeImage": "http://hongxinguoji.com/group1/M00/00/39/Zckdh1fBYPyARQHSAACxXTYiTAE244.jpg",
+                             "activePrice": "127",
+                             "isCharge": "1",
+                             "maxAccountCount": "30",
+                             "giftAccountCount": "",
+                             "publishTime": "2016-06-26 16:24:52",
+                             "activeEditor": "",
+                             "remarks": "",
+                             "sctiveType2": "1",
+                             "sctiveType3": "1",
+                             "setOutTime": "",
+                             "setOutAddress": "深圳",
+                             "activeCountry": "美国",
+                             "activesNum": "1",
+                             "activesCharacteristics": "",
+                             "createTime": "2016-08-16 11:05:11",
+                             "updateTime": "2016-08-27 17:44:37",
+                             "isDelete": "0",
+                             "isCollention": "未关注"
+                         },
+                         "activeStatu": "已结束",
+                         "catelogName": "周末旅行"
+                     }
+                 ]
+             },
+             "attribute": null
+         }
+
+
+- 周末旅行的详情页
+http://localhost:8080/dxs-server/dxsActivesWeek/detailed.do?activeId=15
+
+    必要参数:activeId = 活动的ID
+
+    返回值:
+    {
+        "success":true,
+        "statusCode":"200",
+        "data":[
+            {
+                "activessVO":{
+                    "id": "402880e555edaed40155edd58ec6001c",                   活动的ID
+                    "activeCatelogId": "40288020550a9c4101550a9e990c0001",      活动分类的ID
+                    "activeCatelogName": "企业文化",        活动分类名称
+                    "pid": "1",                             活动类型中类型的ID
+                    "activeCatelogImg": "http://www.junshixly.cn/upload/images/422441046.jpg",                                  活动种类配图
+                    "activeCatelogDescribe": "诶福爱就疯狂的撒加路费传，女的尽快付款爱上开了房间诶就发了多少积分可垃圾",        活动种类描述
+                    "activeCatelogSort": "2",           活动排序
+                    "activeTitle": "ddfsf",             活动标题
+                    "displayMenu": "fgfd",              展示菜单
+                    "activeImage": "http://hongxinguoji.com/group1/M00/00/19/Zckdh1eIqZaATci-AAEjY-BM_AY458.jpg",               缩略图
+                    "activeAddress": "",        活动地点
+                    "hostUnit": "",             主办单位
+                    "limitedNumber": "",        限报人数
+                    "histaryDate": "",          精彩回顾
+                    "deadlineDate": null,       截止报名时间
+                    "activeStateTime": null,    活动开始时间
+                    "activeEndTime": null,      活动结束时间
+                    "activeUsertypeId": "",     活动对象
+                    "activeContent": "dfg",     具体活动内容
+                    "activePrice": "",          价钱
+                    "isCharge": null,           是否收费 0收费 1不收费
+                    "maxAccountCount": "",      可使用鸿鑫币数量
+                    "publishTime": "2016-07-15 17:14:03",           活动发布时间
+                    "activeEditor": ""          编辑人
+                }
+            },
+            {
+                "activesWeekVo":{
+                    "id":"1",
+                    "activeId":"15",
+                    "coOrganizer":"协办单位",
+                    "undertakingUnit":"承办单位",
+                    "supportingUnit":"赞助单位",
+                    "supportUnit":"支持单位",
+                    "mediaUnit":"媒体单位",
+                    "schoolName":"学校",
+                    "catalogChildren":"子分类(预留)",
+                    "activeSchedule":"活动日程",
+                    "objectRequired":"参加对象及要求",
+                    "imgUrls":"精彩回放",
+                    "others":"其他",
+                    "createTime":"2016-08-30 11:43:29",
+                    "updateTime":"2016-09-03 11:43:26",
+                    "isDelete":"0",
+                    "picture": [   // 轮播图
+                        "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                        "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",
+                        "http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png"
+                    ]
+                }
+            }
+        ],
+        "attribute":null
+    }
+
+
+
+// ==============================================单位=====================================================
+
+- 根据活动的ID(activeId)/活动的种类(amId)/单位类别(dataType)查询单位
+http://localhost:8080/dxs-server/ActivesMatchCom/unit.do?pageNo=1&pageSize=4&activesId=8a2c9a98561187100156165e532c0147&amId=4028801b56d4d56b0156d5061d0c0002&dataType=3
+
+    必要参数:activesId = 活动的ID  amId = 活动扩展表的ID  dataType = 单位类型    1:主办单位  2:协办单位  3:承办单位  4:赞助单位  5:支持单位  6:媒体单位
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "pageCount": 1,
+                "pageNo": 1,
+                "pageSize": 4,
+                "total": 1,
+                "result": [
+                    {
+                        "id": "402880f056e3e3470156e3e62a830003",           // 单为的ID
+                        "activesId": "8a2c9a98561187100156165e532c0147",    // 活动的ID
+                        "amId": "4028801b56d4d56b0156d5061d0c0002",         // 活动扩展表ID
+                        "imgUrl": "",
+                        "companyName": "兰啸测试1",     // 公司名称
+                        "dataType": "3",        // 单位展示分类
+                        "createTime": "2016-09-01 11:58:47",
+                        "updateTime": "2016-09-02 13:31:33",
+                        "isDelete": "0",
+                    }
+                ]
+            },
+            "attribute": null
+        }
+
+
+// ======================================================教师推荐==========================================
+
+
+
+
+- 教师推荐中的搜索账号
+http://localhost:8080/dxs-server/actives/accountSaearch.do?mphone=18945061615
+
+    必要参数:`mphone = 某学生的登录账号
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "generalUserEntity":{               注册用户表
+                    "id":"ff80818155c47eaa0155c47fc9c90000",        用户ID
+                    "realname":"高卓",        用户名称
+                    "rolecode":"student",     用户角色
+                    "mphone":"18945061615",         账号
+                    "pwd":"ba47af00f8410060",       密码
+                    "email":null,       邮箱
+                    "empname":null,     企业名称
+                    "empcode":null,     企业组织代码证号
+                    "idcardnumber":"230102199207024125",        身份证号
+                    "checkstatus":4,                核审状态(预留判断企业)
+                    "isdelete":0,                   是否删除(0未删除1删除)
+                    "createtime":1467880556000      用户加入时间
+                },
+                "userDetailEntity":{            用户详情表
+                    "id":"ff80818155c47eaa0155c47fca360001",            当前用户详情表的ID
+                    "userId":"ff80818155c47eaa0155c47fc9c90000",        当前用户的ID
+                    "name":"啊",             用户名称
+                    "headImg":null,          头像
+                    "sex":"男",              性别
+                    "bodyHight":null,        身高
+                    "bodyWeight":null,       体重
+                    "borthday":null,         出生日期
+                    "residence":null,        户籍所在地
+                    "phone":null,            手机号
+                    "email":"412410820@qq.com",         邮箱
+                    "preNative":null,                   名族
+                    "idcard":"230102199207024125",      省份证号
+                    "qq":null,                      QQ
+                    "msn":null,                     MSN
+                    "schoolName":"北大",            学校名称
+                    "schoolAddress":"吃",           学校所在地
+                    "schoolAdmission":null,         入学时间
+                    "schoolGraduation":null,        毕业时间
+                    "schoolGrade":"博2",            年级
+                    "schoolMajor":"玩",             专业
+                    "schoolEducation":"博士后",     学历
+                    "schoolCertificate":null,       证书
+                    "hobby":null,                   个人爱好
+                    "remarks":null,                 备注
+                    "createTime":null,              创建时间
+                    "updateTime":1467955799000,     更新时间
+                    "isDelete":0,                   删除标志
+                }
+            },
+            "attribute":null
+        }
+
+
+
+
+// =============================================活动报名================================================
+
+
+
+- 报名活动
+http://localhost:8080/dxs-server/actives/activityRegistration.do?id=402880e555edaed40155edd58ec6001c
+
+    必要参数:id = 活动ID
+    可选参数:recommendUserId = 推荐人的ID
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"报名成功,请到个人中心缴费",
+            "data":null,
+            "attribute":null
+        }
+
+
+
+- 报名中的活动(有效的活动)
+http://192.168.0.10:8080/dxs-server/actives/activitiesInRegistration.do?curPage=1&pageSize=10
+
+       条件查询:
+            可选参数:activeCatelogId = 活动分类中子分类的ID(和pid=活动分类的ID选其一不可同时传参)   activeAddress=活动地址     schedule = 活动进度     activeCatelogId = 活动分类中子分类的ID    pid = 活动分类    histaryDate = 精彩回顾
+
+            注:schedule=进行中不可以在activeAddress=北京市#的后边,如果放到后边schedule的条件是无效的
+
+
+            返回值:
+                {
+                    "success": true,
+                    "statusCode": "200",
+                    "data": {
+                        "pageCount": 1,
+                        "pageNo": 1,
+                        "pageSize": 50,
+                        "total": 4,
+                        "result": [
+                            {
+                                "userCount": 0,
+                                "active": {
+                                    "id": "8a2c9a9855edcbcf0155ede93c7f002c",   活动的id
+                                    "activeCatelogId": "3",     活动分类的id
+                                    "activeCatelogName": "专题活动",    活动名称
+                                    "pid": "0",     菜单类型
+                                    "activeCatelogImg": null,   活动种类配图
+                                    "activeCatelogDescribe": null,  活动种类的描述
+                                    "activeCatelogSort": null,  活动种类的排序
+                                    "activeTitle": "中国儿童基金会联合鸿鑫国际启动“春蕾午餐计划”关爱贫困女童",     活动标题
+                                    "displayMenu": "",      展示菜单
+                                    "activeAddress": "北京市#",    活动地点
+                                    "hostUnit": "北京鸿鑫国际集团有限公司",     主办单位
+                                    "limitedNumber": "",         限报人数
+                                    "histaryDate": "2011",      精彩回顾
+                                    "deadlineDate": "2016-07-26 00:00:00",      报名截止时间
+                                    "activeStateTime": "2016-07-27 00:00:00",       活动开始时间
+                                    "activeEndTime": "2016-07-30 00:00:00",     活动结束时间
+                                    "activeUsertypeId": "",     活动对象
+                                    "activeContent": ""      具体活动内容
+                                    "activePrice": "",      价钱
+                                    "isCharge": null,       是否收费 0收费 1不收费
+                                    "maxAccountCount": "",      可使用鸿鑫币数量
+                                    "publishTime": "2016-07-15 17:35:33",
+                                    "activeEditor": ""      发布时间
+                                },
+                                "activeStatu": "报名中",       活动进度
+                                "catelogName": "专题活动"       活动类型
+                            }
+                        ]
+                    },
+                    "attribute": null
+                }
+
+
+// ===========================================创业路演================================================
+
+
+- 申请创业路演
+http://localhost:8080/ActivesRoadshowApplyController/aplication.do?...
+
+    传递的参数:
+                /**企业所在地*/
+            	companyAddress;
+            	/**注册资金*/
+            	regFound;
+            	/**企业简介*/
+            	companyIntroduce;
+            	/**团队介绍*/
+            	companyTeamIntroduce;
+            	/**项目介绍*/
+            	projectIntroduce;
+            	/**项目名称*/
+            	projectName;
+            	/**项目前景*/
+            	projectProspect;
+            	/**行业优势*/
+            	industryAdvantage;
+            	/**文件地址*/
+            	fileUrl;
+            	/**文件id*/
+            	fileId;
+            	/**路演需求*/
+            	roadshowNeed;
+            	/**处理结果说明*/
+            	message;
+
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"请登录!",
+            "data":null,
+            "attribute":null
+        }
+
+
+- 活动中心创业路演详情页
+
+
+
+// ============================================================名师巡讲==========================================
+
+- 名师巡讲>>>名师特约专场/主题
+http://localhost:8080/dxs-server/LecturesGroups/specialPerformance.do?pageNo=1&pageSize=5&type=0
+
+    必要参数:type = 0:名师特约专场     1:主题
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "pageCount":2,
+                "pageNo":1,
+                "pageSize":5,
+                "total":5,
+                "result":[
+                    {
+                        "id":"1",
+                        "title":"标题",
+                        "imgUrl":"http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMU96ASx-OAACZcNNh9E0519.jpg",
+                        "summy":"简介",
+                        "introduce":"介绍",
+                        "company":"主办方",
+                        "type":"0",
+                        "sort":"1",
+                        "createTime":"2016-08-25 09:52:19",
+                        "updateTime":"2016-08-27 09:52:21",
+                        "isDelete":"0"
+                    }
+                ]
+            },
+            "attribute":null
+        }
+
+
+
+
+
+- 名师巡讲>特约名师专场
+localhost:8080/dxs-server/LecturesPersionController/special.do?curPage=1&pageSize=5&type=1
+
+    必要参数: type = 1    注: 0 = 企业家  1 = 名师
+
+    返回值:
+         {
+             "success":true,
+             "statusCode":"200",
+             "data":[
+                 {
+                     "id":"1",       名师巡讲->企业家/名师
+                     "userId":"",    用户ID
+                     "prosonName":"姓名(企业家)",
+                     "prosonJob":"职位",
+                     "prosonAddress":"地址",
+                     "prosonEdu":"毕业院校",
+                     "prosonTopJob":"社会最高职位",
+                     "prosonNowJob":"现任职单位",
+                     "prosonNowProject":"企业经营项目",
+                     "educational":"学历",
+                     "prosonResumeDisplay":"个人履历",
+                     "prosonStyleVideo":"企业家风采视频",
+                     "prosonStyle":"企业家风采描述",
+                     "prosonAccomplishment":"个人成就",
+                     "type":"0",        类型: 0:企业   1:名师
+                     "createTime":"2016-08-02 10:39:02",
+                     "updateTime":"2016-08-25 10:39:08",
+                     "isDelete":"0"
+                 }
+             ],
+             "attribute":null
+         }
+
+
+- 企业家风采/名师风采详情页
+http://localhost:8080/dxs-server/LecturesPersionController/special.do?id=1
+
+    必要参数:id = 名师巡讲->企业家/名师的ID
+
+    返回参数:
+          {
+              "success":true,
+              "statusCode":"200",
+              "data":{
+                  "picture":[       个人展示的图片数组
+                      "http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMU96ASx-OAACZcNNh9E0519.jpg",
+                      "http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMVAWARfx5AACnd87dh9o675.jpg",
+                      "http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMVFmAT-TUAADPjFR-T7s994.jpg",
+                      "http://hongxinguoji.com/group1/M00/00/1C/Zckdh1eMVHKAOL3fAACVLVB2vpw968.jpg",
+                      "http://hongxinguoji.com/group1/M00/00/1E/Zckdh1eQlx6ADG3kAADOgzuDLcs526.jpg"
+                  ],
+                  "lecturesPersionVo":{
+                      "id":"1",       名师巡讲->企业家/名师
+                       "userId":"",    用户ID
+                       "prosonName":"姓名(企业家)",
+                       "prosonJob":"职位",
+                       "prosonAddress":"地址",
+                       "prosonEdu":"毕业院校",
+                       "prosonTopJob":"社会最高职位",
+                       "prosonNowJob":"现任职单位",
+                       "prosonNowProject":"企业经营项目",
+                       "educational":"学历",
+                       "prosonResumeDisplay":"个人履历",
+                       "prosonStyleVideo":"企业家风采视频",
+                       "prosonStyle":"企业家风采描述",
+                       "prosonAccomplishment":"个人成就",
+                       "type":"0",        类型: 0:企业   1:名师
+                       "createTime":"2016-08-02 10:39:02",
+                       "updateTime":"2016-08-25 10:39:08",
+                       "isDelete":"0"
+                  }
+              },
+              "attribute":null
+          }
+
+
+
+- 查询所有站点
+http://localhost:8080/dxs-server/LecturesPersionController/allSchool.do?pageNo=1&pageSize=2
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "pageCount":1,
+                "pageNo":1,
+                "pageSize":10,
+                "total":4,
+                "result":[
+                    {
+                        "lecturesVos":[
+                            "财经贸大学 科技大学"
+                        ],
+                        "userName":"北京站"
+                    },
+                    {
+                        "lecturesVos":[
+                            "清华大学"
+                        ],
+                        "userName":"天津站"
+                    },
+                    {
+                        "lecturesVos":[
+                            "北大大学"
+                        ],
+                        "userName":"河北站"
+                    },
+                    {
+                        "lecturesVos":[
+                            "null"
+                        ],
+                        "userName":""
+                    }
+                ]
+            },
+            "attribute":null
+        }
+
+
+
+
+- 全国巡讲>>>>根据所在站名查询
+http://localhost:8080/dxs-server/LecturesController/lecture.do?pageNo=1&pageSize=3&LectureAddressShort=天津站
+
+    必要参数:LectureAddressShort = 站点名称
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "pageCount":1,
+                "pageNo":1,
+                "pageSize":3,
+                "total":1,
+                "result":[
+                    {
+                        "id":"2",                               名师巡讲->详情页的ID
+                        "acitveId":"复古风格",                    活动的ID
+                        "lpId":"12",                            名师巡讲->企业家/名师的ID
+                        "lectureTitle":"发个",                   主题
+                        "schoolName":"",                        学校名称
+                        "lectureAddressShort":"天津站",          站点名称
+                        "lectureAddress":"的风格的风格让",         演讲地址
+                        "lectureTime":"2016-08-16 00:00:00",    演讲时间
+                        "lectureContentSummary":"多少分活动计划",  主题内容简介
+                        "lectureContentImgs":"",                图片地址
+                        "lectureContent":"该不会",               主题内容详解
+                        "lgId":"用户",                            所属场次
+                        "createTime":"2016-08-22 15:32:10",
+                        "updateTime":"2016-08-22 15:32:10",
+                        "isDelete":"0"
+                        "name":"姓名(名师)"        主讲
+                    }
+                ]
+            },
+            "attribute":null
+        }
+
+
+
+
+- barnner右边位置根据外部标记字段查询
+http://localhost:8080/dxs-server/LecturesController/lecture.do?pageNo=1&pageSize=3&outSign=1
+
+    必要参数:outSign = 1(固定值)
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "pageCount": 1,
+                "pageNo": 1,
+                "pageSize": 3,
+                "total": 1,
+                "result": [
+                    {
+                        "lecturesPersionVo": {
+                            "id": "3",
+                            "userId": "",
+                            "educational": "学历",
+                            "prosonName": "姓名(名师)王五",
+                            "imgUrl": "http://hongxinguoji.com/group1/M00/00/1E/Zckdh1eQlx6ADG3kAADOgzuDLcs526.jpg",
+                            "prosonJob": "职位",
+                            "prosonAddress": "地址",
+                            "prosonEdu": "毕业院校",
+                            "prosonTopJob": "社会最高职位",
+                            "prosonNowJob": "现任职单位",
+                            "prosonNowProject": "企业经营项目",
+                            "postJane": null,
+                            "prosonResumeDisplay": "个人履历",
+                            "prosonStyleVideo": "企业家风采视频",
+                            "prosonStyle": "企业家风采描述",
+                            "prosonAccomplishment": "http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMU96ASx-OAACZcNNh9E0519.jpg#http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMVAWARfx5AACnd87dh9o675.jpg#http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMVFmAT-TUAADPjFR-T7s994.jpg#http://hongxinguoji.com/group1/M00/00/1C/Zckdh1eMVHKAOL3fAACVLVB2vpw968.jpg#http://hongxinguoji.com/group1/M00/00/1E/Zckdh1eQlx6ADG3kAADOgzuDLcs526.jpg",
+                            "type": "1",
+                            "createTime": "2016-08-02 10:39:02",
+                            "updateTime": "2016-08-25 10:39:08",
+                            "isDelete": "0"
+                        },
+                        "lecturesvo": {
+                            "id": "4028801a56b633800156b6742abc000a",
+                            "acitveId": "8a2c9a985611871001561204633c0099",
+                            "lpId": "3",
+                            "lectureTitle": "鼎折覆餗",
+                            "schoolName": null,
+                            "lectureAddressShort": "第三方斯蒂芬",
+                            "lectureAddress": "第三方的氛围",
+                            "lectureTime": "2016-08-17 00:00:00",
+                            "outSign": "1",
+                            "lectureContentSummary": "对方身份",
+                            "lectureContentImgs": "http://hongxinguoji.com/group1/M00/00/34/Zckdh1e8BSOAMRKSAAAeKj1p5TE663.jpg",
+                            "lectureContent": "
+
+                   的阿斯顿
+        ",
+                            "lgId": "2",
+                            "createTime": "2016-08-23 16:11:21",
+                            "updateTime": "2016-08-23 16:11:21",
+                            "isDelete": "0"
+                        }
+                    }
+                ]
+            },
+            "attribute": null
+        }
+
+
+- 根据场次查询>>名师特约专场>>特约名师专场详情列表页
+http://localhost:8080/dxs-server/LecturesController/lecture.do?pageNo=1&pageSize=3&lgId=1
+
+    必要参数:lgId = 名师专场ID
+
+    返回值:
+         {
+             "success":true,
+             "statusCode":"200",
+             "data":{
+                 "pageCount":7,
+                 "pageNo":1,
+                 "pageSize":1,
+                 "total":6,
+                 "result":[
+                     {
+                         "lecturesPersionVo":{
+                              "id":"1",       名师巡讲->企业家/名师
+                              "userId":"",    用户ID
+         					  "educational":"学历",
+                              "prosonName":"姓名(企业家)",
+         					  "imgUrl":"http://hongxinguoji.com/group1/M00/00/1E/Zckdh1eQlx6ADG3kAADOgzuDLcs526.jpg",
+                              "prosonJob":"职位",
+                              "prosonAddress":"地址",
+                              "prosonEdu":"毕业院校",
+                              "prosonTopJob":"社会最高职位",
+                              "prosonNowJob":"现任职单位",
+                              "prosonNowProject":"企业经营项目",
+                              "postJane":null,
+                              "prosonResumeDisplay":"个人履历",
+                              "prosonStyleVideo":"企业家风采视频",
+                              "prosonStyle":"企业家风采描述",
+                              "prosonAccomplishment":"个人成就",
+                              "type":"0",        类型: 0:企业   1:名师
+                              "createTime":"2016-08-02 10:39:02",
+                              "updateTime":"2016-08-25 10:39:08",
+                              "isDelete":"0"
+                         },
+                         "lecturesvo":{		//
+                             "id":"2",                               名师巡讲->详情页的ID
+                                 "acitveId":"复古风格",                    活动的ID
+                                 "lpId":"12",                            名师巡讲->企业家/名师的ID
+                                 "lectureTitle":"发个",                   主题
+                                 "schoolName":"",                        学校名称
+                                 "lectureAddressShort":"天津站",          站点名称
+                                 "lectureAddress":"的风格的风格让",         演讲地址
+                                 "lectureTime":"2016-08-16 00:00:00",    演讲时间
+                                 "lectureContentSummary":"多少分活动计划",  主题内容简介
+                                 "lectureContentImgs":"",                图片地址
+                                 "lectureContent":"该不会",               主题内容详解
+                                 "lgId":"用户",                            所属场次
+                                 "createTime":"2016-08-22 15:32:10",
+                                 "updateTime":"2016-08-22 15:32:10",
+                                 "isDelete":"0"
+                                 "name":"姓名(名师)"        主讲
+                         }
+                     },
+                     {	// 名师巡讲>>专场
+                         "id":"1",
+         				"title":"标题",
+         				"imgUrl":"http://hongxinguoji.com/group1/M00/00/1B/Zckdh1eMU96ASx-OAACZcNNh9E0519.jpg",
+         				"summy":"简介",
+         				"introduce":"介绍",
+         				"company":"主办方",
+         				"type":"0",
+         				"sort":"1",
+         				"createTime":"2016-08-25 09:52:19",
+         				"updateTime":"2016-08-27 09:52:21",
+         				"isDelete":"0"
+                     }
+                 ]
+             },
+             "attribute":null
+         }
+
+
+
+
+- 活动中心>名师巡讲>名师巡讲详情页
+http://localhost:8080/dxs-server/LecturesController/lecture.do?id=1
+
+    必要参数: id = 名师巡讲->详情页的ID
+
+    返回值:
+         {
+             "success":true,
+             "statusCode":"200",
+             "data":{
+                 "lecturesPersionVo":{
+                      "id":"1",       名师巡讲->企业家/名师
+                      "userId":"",    用户ID
+                      "prosonName":"姓名(企业家)",
+                      "prosonJob":"职位",
+                      "prosonAddress":"地址",
+                      "prosonEdu":"毕业院校",
+                      "prosonTopJob":"社会最高职位",
+                      "prosonNowJob":"现任职单位",
+                      "prosonNowProject":"企业经营项目",
+                      "educational":"学历",
+                      "prosonResumeDisplay":"个人履历",
+                      "prosonStyleVideo":"企业家风采视频",
+                      "prosonStyle":"企业家风采描述",
+                      "prosonAccomplishment":"个人成就",
+                      "type":"0",        类型: 0:企业   1:名师
+                      "createTime":"2016-08-02 10:39:02",
+                      "updateTime":"2016-08-25 10:39:08",
+                      "isDelete":"0"
+                 },
+                 "imgs":[
+                             "http://hongxinguoji.com/group1/M00/00/34/Zckdh1e8BSOAMRKSAAAeKj1p5TE663.jpg",
+                             "http://hongxinguoji.com/group1/M00/00/34/Zckdh1e8BSOAMRKSAAAeKj1p5TE663.jpg",
+                             "http://hongxinguoji.com/group1/M00/00/34/Zckdh1e8BSOAMRKSAAAeKj1p5TE663.jpg"
+                         ],
+                 "lecturesVo":{
+                      "id":"2",                                名师巡讲->详情页的ID
+                      "acitveId":"复古风格",                     活动的ID
+                      "lpId":"12",                             名师巡讲->企业家/名师的ID
+                      "lectureTitle":"发个",                    主题
+                      "schoolName":"",                         学校名称
+                      "lectureAddressShort":"天津站",           站点名称
+                      "lectureAddress":"的风格的风格让",          演讲地址
+                      "lectureTime":"2016-08-16 00:00:00",     演讲时间
+                      "lectureContentSummary":"多少分活动计划",   主题内容简介
+                      "lectureContentImgs":"",                 图片地址
+                      "lectureContent":"该不会",                主题内容详解
+                      "lgId":"用户",                            所属场次
+                      "createTime":"2016-08-22 15:32:10",
+                      "updateTime":"2016-08-22 15:32:10",
+                      "isDelete":"0"
+                 }
+             },
+             "attribute":null
+         }
+
+
+
+- 预约
+http://localhost:8080/dxs-server/LecturesController/bespeak.do?id=4028801a56b633800156b639e5c70002
+
+    必要参数:id = 名师巡讲详情页的ID
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "activessVO": {
+                    "id": "8a2c9a9855edcbcf0155ede93c7f002c",   活动的id
+                    "activeCatelogId": "3",     活动分类的id
+                    "activeCatelogName": "专题活动",    活动名称
+                    "pid": "0",     菜单类型
+                    "activeCatelogImg": null,   活动种类配图
+                    "activeCatelogDescribe": null,  活动种类的描述
+                    "activeCatelogSort": null,  活动种类的排序
+                    "activeTitle": "中国儿童基金会联合鸿鑫国际启动“春蕾午餐计划”关爱贫困女童",     活动标题
+                    "displayMenu": "",      展示菜单
+                    "activeAddress": "北京市#",    活动地点>>>>>>>>>>>展示参加地点
+                    "hostUnit": "北京鸿鑫国际集团有限公司",     主办单位
+                    "limitedNumber": "",         限报人数
+                    "histaryDate": "2011",      精彩回顾
+                    "deadlineDate": "2016-07-26 00:00:00",      报名截止时间
+                    "activeStateTime": "2016-07-27 00:00:00",       活动开始时间
+                    "activeEndTime": "2016-07-30 00:00:00",     活动结束时间
+                    "activeUsertypeId": "",     活动对象
+                    "activeContent": ""      具体活动内容
+                    "activePrice": "",      价钱>>>>>>>>>>>>>>>>>>>>>>展示门票费用
+                    "isCharge": null,       是否收费 0收费 1不收费
+                    "maxAccountCount": "",      可使用鸿鑫币数量
+                    "publishTime": "2016-07-15 17:35:33",
+                    "activeEditor": ""      发布时间
+                },
+                "user": {
+                     "id": "4028800c55c49bf30155c4a17a0d0001",
+                    "userId": "4028800c55c49bf30155c4a178b10000",
+                    "name": "卢跃跃"           // 用户名称
+                    "headImg": null,
+                    "sex": "男",              // 用户性别
+                    "bodyHight": null,
+                    "bodyWeight": null,
+                    "borthday": null,
+                    "residence": null,
+                    "phone": "18201623470",         // 联系电话
+                    "email": "110@qq.com=",         // 邮箱
+                    "preNative": null,
+                    "idcard": "130421199112016000",
+                    "qq": "110",
+                    "msn": null,
+                    "schoolName": "工业大学",
+                    "schoolAddress": "天津",
+                    "schoolAdmission": null,
+                    "schoolGraduation": null,
+                    "schoolGrade": "四",
+                    "schoolMajor": "数学",
+                    "schoolEducation": "工业大学",          // 学历
+                    "schoolCertificate": null,
+                    "hobby": "110",
+                    "jobSchool": null,
+                    "jobSchoolPosition": null,
+                    "remarks": null,
+                    "createTime": null,
+                    "updateTime": 1468655858000,
+                    "isDelete": 0,
+                  "userEntity": {
+                                  "id": "4028800c55c49bf30155c4a178b10000",
+                                  "realname": "卢跃跃",
+                                  "rolecode": "student",        // 身份
+                                  "mphone": "18201623470",
+                                  "pwd": "9ab053f591473770cdf2b0c441d5e6ae",
+                                  "email": "110@qq.com=",
+                                  "empname": null,
+                                  "empcode": null,
+                                  "idcardnumber": "130421199112016000",
+                                  "checkstatus": 4,
+                                  "isdelete": 0,
+                                  "createtime": 1467882764000,
+                                  "userCompancyEntity": null
+                              }
+                }
+            },
+            "attribute": null
+        }
+
+
+
+- 主题全国专场
+http://localhost:8080/dxs-server/LecturesGroups/address.do?id=1
+
+    必要参数:id = 名家巡讲->专场的ID
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": [
+                "北京站",
+                "天津站",
+                "河北站"
+            ],
+            "attribute": null
+        }
+
+
+
+
+
+
+// ======================================================================出国游学==================================================================================
+
+
+- 活动分类名称查询          注:活动标题中的悬浮框
+http://192.168.0.10:8080/dxs-server/activeCenter/activityClassification.do?activeCatelogName=出国游学
+
+    必要参数:activeCatelogName = 活动分类名称
+
+    返回值:
+           {
+               "success":true,
+               "statusCode":"200",
+               "data":{
+                   "id":"4",                            活动分类ID
+                   "activeCatelogName":"出国游学",      活动分类名称
+                   "pid":"1",                           菜单类型ID
+                   "activeCatelogImg":null,             活动种类配图
+                   "activeCatelogDescribe":null,        活动种类的描述
+                   "activeCatelogSort":null,            活动种类的排序
+                   "createTime":null,
+                   "updateTime":null,
+                   "isDelete":0
+               },
+               "attribute":null
+           }
+
+- 根据活动分类ID查询所属的活动(可条件查询)           注:活动标题的悬浮框中的所属分类活动,默认是学生游学(美国)
+192.168.0.10:8080/dxs-server/activeCenter/activityList.do?curPage=1&pageSize=10&activeCatelogId=4&displayMenu=当前热门游学路线&activeCountry=英国&setOutAddress=杭州&activeUsertypeId=大学&sctiveType2=2&sctiveType3=5&priceRange=2&setOutTime=2016-07
+
+    必要参数:activeCatelogId = 活动类型
+    可选参数(查询条件): activeCountry = 活动国家    setOutAddress = 出发城市    activeUsertypeId = 适合人群    displayMenu=当前热门游学路线       注:当前热门游学路线是固定的
+                        sctiveType2 = (1:学生游学/2:亲子游学/3:白领游学)    sctiveType3 = 活动类型      priceRange = 价格区间  注:1 = 1万以下 | 2 = 1 - 3万 | 3 = 3 - 5万 | 4 = 5万以上
+                        setOutTime = 出发时间如果有年和月,将年和月用"-"隔开   setOutAddress = 活动出发地(市)
+
+      >学生游学>   必要参数:activeCatelogId = 活动类型      sctiveType2 = 1     activeCountry = 美国
+
+      >亲子专区>   必要参数:activeCatelogId = 活动类型      sctiveType2 = 2     activeCountry = 美国
+
+
+
+    返回值参数:
+    {
+        "success": true,
+        "statusCode": "200",
+        "data": {
+            "pageCount": 1,
+            "pageNo": 1,
+            "pageSize": 10,
+            "total": 9,
+            "result": [
+                {
+                    "userCount": 0,
+                    "active": {
+                        "activeCatelogId": "5",                                 活动分类的id
+                        "activeCatelogName": "名师巡讲",                        活动分类名称
+                        "pid": "1",                                             菜单类型
+                        "activeCatelogImg": null,                               活动种类配图
+                        "activeCatelogDescribe": null,                          活动种类的描述
+                        "activeCatelogSort": null,                              活动种类的排序
+                        "id": "8a2c9a985616fcd401561faf92fe000f",               活动的id
+                        "activeTitle": " 运城学院计算机中心在线模拟测评",       活动标题
+                        "displayMenu": "最新活动",                              展示菜单
+                        "activeAddress": "山西运城市运城学院",                  活动地点
+                        "hostUnit": "全国大学生创业就业中心",                   主办单位
+                        "limitedNumber": "55",                                  限报人数
+                        "histaryDate": "",                                      精彩回顾
+                        "deadlineDate": "2016-05-17 00:00:00",                  报名截止时间
+                        "activeStateTime": "2016-06-20 00:00:00",               活动开始时间
+                        "activeEndTime": "2016-07-12 00:00:00",                 活动结束时间
+                        "activeUsertypeId": "",                                 活动对象
+                        "activeContent": "                                      具体活动内容
+                        "activeImage": "",
+                        "activePrice": "",                          价钱
+                        "isCharge": null,                           是否收费 0收费 1不收费
+                        "maxAccountCount": "",                      可使用鸿鑫币数量
+                        "giftAccountCount": null,                   赠送鸿鑫币数量
+                        "publishTime": "2016-07-25 00:00:00",       发布时间
+                        "activeEditor": "瑞雪",                     编辑人
+                        "remarks": null,                            备注
+                        "sctiveType2": null,                        活动分类2           注:1:学生游学/2:亲子游学/3:白领游学
+                        "sctiveType3": null,                        活动分类3           注:1:名校名企交流学习系列
+                                                                                           2:留学生活体验式系列
+                                                                                           3:领导力精英成长系列
+                                                                                           4:特色主题扩展系列
+                                                                                           5:亲子互动系列
+                        "setOutTime": null,                         出发时间
+                        "setOutAddress": null,                      出发地
+                        "activeCountry": null,                      活动国家
+                        "activesNum":null                           行程天数
+                        "activesCharacteristics":null               特色简介
+                        "IsCollention":"已关注"                     关注
+                        "createTime": "2016-07-25 09:33:35",
+                        "updateTime": "2016-07-26 11:45:55",
+                        "isDelete": "0"
+                    },
+                    "activeStatu": "已结束",           活动进度
+                    "catelogName": "名师巡讲"           活动类型
+                }
+                }
+            ]
+        },
+        "attribute": null
+    }
+
+
+- 出国游学中游学类型(学生游学和亲子游学)活动的出发城市和国家的下拉选
+http://192.168.0.10:8080/dxs-server/activeCenter/activeState.do?activeCatelogId=4&sctiveType2=2
+
+    必要参数:activeCatelogId = 例如:出国游学的ID    sctiveType2 = 1:学生游学/2:亲子游学/3:白领游学
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "addressSql":[  // 出发城市
+                    "杭州"
+                ],
+                "countrySql":[ // 活动国家
+                    "英国"
+                ]
+            },
+            "attribute":null
+        }
+
+
+
+- 游学须知
+http://192.168.0.10:8080/dxs-server/activesNotes/travelNotes.do?curPage=1&pageSize=10&countrys=美国
+
+    可选参数: countrys = 国别    注:游学活动的初始页面不用传递国别,如果选择某以国家的游学活动需传递国别字段
+
+            id = 游学须知的id(详情页)
+
+
+   返回值:>>>lianbiao列表页
+              "success":true,
+            "statusCode":"200",
+            "data":{
+                "pageCount":1,
+                "pageNo":1,
+                "pageSize":10,
+                "total":1,
+                "result":[
+                    {
+                        "id":"1",                   游学须知的ID
+                        "userId":"用户ID",          后台录入用户的ID
+                        "imgUrl":"缩略图URL",       缩略图URL
+                        "videoUrl":"视频URL",       视频URL
+                        "title":"标题",             标题
+                        "editor":"作者",            作者
+                        "publishTime":"2016-07-14 17:53:51",        须知的发布时间
+                        "summary":"摘要",                 须知摘要
+                        "contents":"内容",                须知内容
+                        "publishYear":"发表年份",         须知发表年份
+                        "countrys":"美国",                国别
+                        "sort":"0",                       编号
+                        "createTime":"2016-07-12 17:52:55",
+                        "updateTime":"2016-07-20 17:52:59",
+                        "isDelete":"0"
+                    }
+                ]
+            },
+            "attribute":null
+        }
+
+
+
+   返回值:>>>详情页
+        {
+            "success":true,
+            "statusCode":"200",
+            "data":{
+                "id":"1",                   游学须知的ID
+                "userId":"用户ID",          后台录入用户的ID
+                "imgUrl":"缩略图URL",       缩略图URL
+                "videoUrl":"视频URL",       视频URL
+                "title":"标题",             标题
+                "editor":"作者",            作者
+                "publishTime":"2016-07-14 17:53:51",        须知的发布时间
+                "summary":"摘要",                 须知摘要
+                "contents":"内容",                须知内容
+                "publishYear":"发表年份",         须知发表年份
+                "countrys":"美国",                国别
+                "sort":"0",                       编号
+                "createTime":"2016-07-12 17:52:55",
+                "updateTime":"2016-07-20 17:52:59",
+                "isDelete":"0"
+            },
+            "attribute":null
+        }
+
+
+
+- 出国游学中的活动详情页
+http://192.168.0.10:8080/dxs-server/ActivesDetailsController/tourDetails.do?id=35757575757575785757857575785757
+
+    必要参数:id = 活动的ID
+
+        返回值:
+            {
+                "success":true,
+                "statusCode":"200",
+                "data":{
+                    "userCount":0,              该活动报名人数
+                    "earnest":0.0,              活动定金
+                    "activessVO":{              活动表
+                        "id":"35757575757575785757857575785757",        活动ID
+                        "activeCatelogId":"4",                          活动分类ID
+                        "activeImage":"http://hongxinguoji.com/group1/M00/00/1F/Zckdh1eTD32APUY0AAGSz7bQn8w452.png",      缩略图
+                        "activeTitle":"志岗(游学首页中当前热门游学路线)",      标题
+                        "displayMenu":"当前热门游学路线",                       展示菜单
+                        "activeAddress":"",                                     活动地点
+                        "hostUnit":"东方闪电",                                  主办单位
+                        "limitedNumber":null,                                   限报人数
+                        "histaryDate":null,                                     精彩回顾
+                        "publishTime":"2016-06-26 16:24:52",                    活动发布时间
+                        "deadlineDate":"2016-07-16 18:05:10",                   报名截止时间
+                        "activeStateTime":"2016-07-06 09:07:12",                活动开始时间
+                        "activeEndTime":"2016-07-20 09:07:17",                  活动结束时间
+                        "activeUsertypeId":"高中",                              活动对象
+                        "activeContent":"",                     具体活动内容
+                        "activePrice":"127",                    价格
+                        "isCharge":"1",                         是否缴费
+                        "maxAccountCount":"30",                 可使用鸿鑫币数量
+                        "giftAccountCount":null,                赠送鸿鑫币数量
+                        "activeEditor":null,                    编辑人
+                        "remarks":null,                         备注
+                        "sctiveType2":"1",                      活动分类2
+                        "sctiveType3":null,                     活动分类3
+                        "setOutTime":null,                      出发时间
+                        "setOutAddress":"深圳",                 活动出发地
+                        "activeCountry":"美国",                 活动国家
+                        "activesNum":"20",                      行程天数
+                        "activesCharacteristics":"",            特色简介
+                        "createTime":"2016-08-16 11:05:11",
+                        "updateTime":"2016-08-04 09:04:50",
+                        "isDelete":"0"
+                    },
+                    "activesDetailsDaysEntityList":[        活动行程天数
+                        {
+                            "id":"1",                       ID
+                            "activeId":"35757575757575785757857575785757",      活动ID
+                            "daysName":1,               活动行程第几天
+                            "addressName":"地名",        地名
+                            "fid1":"图片1主键",
+                            "fid1ImgUrl":"图片1地址",
+                            "fid2":"图片2主键",
+                            "fid2ImgUrl":"图片2地址",
+                            "fid3":"图片3主键",
+                            "fidImgUrl":"图片3主键",
+                            "content":"内容",              内容
+                            "boarders":"住宿地",           住宿地
+                            "createTime":1470719781000,
+                            "updateTime":1471410984000,
+                            "isDelete":0
+                        }
+                    ],
+                    "activesDetailsEntityList":[        活动扩展表
+                        {
+                            "id":"1",                                   ID
+                            "activesId":"35757575757575785757857575785757",         活动ID
+                            "recommendedReason":"推荐理由(阿斯顿发送到发送到发送到发送到发送到分)",        推荐理由
+                            "costInclude":"费用包含",                费用包含?
+                            "costUninclude":"费用不包含",            费用不包含
+                            "visaNote":"签证方式",                   签证方式
+                            "preparation":"行前准备",                行前准备
+                            "paymentMethod":1,                       付款方式(1:支付宝 2:微信)
+                            "commonProblem":"常见问题(待定)",        常见问题
+                            "createTime":1471324200000,
+                            "updateTime":1473138603000,
+                            "isDelete":0,
+                            "img1Fid":图片1id,
+                            "img1Url":图片1地址,
+                            "img2Fid":图片2id,
+                            "img2Url":图片2地址,
+                            "img3Fid":图片3id,
+                            "img3Url":图片3地址,
+                            "activesStart2":出发日期和团信息
+
+                        }
+                    ]
+                },
+                "attribute":null
+            }
+
+
+
+
+// ======================================================================================白领游学=========================================================================================
+
+- 白领游学中用户信息
+http://192.168.0.10:8080/dxs-server/whiteCollarTour(activesWhiteController)/userinfo.do
+
+    返回值:
+        {
+            "success": true,
+            "statusCode": "200",
+            "data": {
+                "employedVOs": [        // 用户职位信息
+                    {
+                        "id": "4028801555d8cd560155d8e472090005",
+                        "employedCatalogId": "20",
+                        "userId": "4028800c55c49bf30155c4a178b10000",
+                        "employedName": "奋斗的风格",        // 用户的职位名称
+                        "employedPosition": "妨功害能",
+                        "employedSalary": "202",
+                        "employedNum": null,
+                        "employedResponsibilities": "
+                        "employedType": null,
+                        "experience": null,
+                        "education": null,
+                        "compancyName": null,
+                        "compancyAddress": "dhj",
+                        "contactName": "的附件蝴蝶结",
+                        "contactTel": "51212121",
+                        "contactPhone": "4564421",
+                        "contactMail": "4486635",
+                        "university": null,
+                        "publishTime": null
+                    }
+                ],
+                "userDetailVOs": [      // 用户详细信息
+                    {
+                        "id": "4028800c55c49bf30155c4a17a0d0001",
+                        "userId": "4028800c55c49bf30155c4a178b10000",
+                        "name": "卢跃跃",         // 用户的真实姓名
+                        "headImg": null,
+                        "sex": "男",
+                        "bodyHight": null,
+                        "bodyWeight": null,
+                        "borthday": null,
+                        "residence": null,
+                        "phone": "18201623470",     // 用户的电话
+                        "email": "110@qq.com=",     // 用户邮箱
+                        "preNative": null,
+                        "idcard": "130421199112016000",
+                        "qq": "110",
+                        "msn": null,
+                        "schoolName": "工业大学",
+                        "schoolAddress": "天津",
+                        "schoolAdmission": null,
+                        "schoolGraduation": null,
+                        "schoolGrade": "四",
+                        "schoolMajor": "数学",
+                        "schoolEducation": "工业大学",
+                        "schoolCertificate": null,
+                        "hobby": "110",
+                        "remarks": null,
+                        "createTime": null,
+                        "upStringTime": null,
+                        "isDelete": "0",
+                        "jobSchool": null,
+                        "jobSchoolPosition": null
+                    }
+                ]
+            },
+            "attribute": null
+        }
+
+
+
+- 保存白领专区提交的信息
+http://192.168.0.10:8080/dxs-server/whiteCollarTour/whiteCollar.do?
+
+    可选参数:destination = 目的地  destinationRemarks = 备选目的地  setOutTime = 出发时间   setOutTimeRemarksTime = 备选时间
+    days = 出行天数     tripPrices = 行程预算   tripBigNum = 承人数    tripSmailNum = 儿童数  address = 详细地址  remarks = 备注
+
+    返回值:
+        {
+            "success":true,
+            "statusCode":"保存成功!",
+            "data":null,
+            "attribute":null
+        }
+
+
+
+// ==========================================================================游学制定=====================================================================
+
+
+- 游学制定首页的初始化信息
+http://192.168.0.10:8080/dxs-server/ActivesCustomController/customTravel.do?activesCustomizedCoursesId=1&activesCustomCountryId=1
+
+    可选参数:activesCustomizedCoursesId = 课程选择ID       1:语言提升   2:商务英语  3:备考课程  4:职业认证
+             activesCustomCountryId = 国家ID  1:美国    2:英国    3:加拿大   4:澳大利亚  5:德国    6:法国    7:新西兰
+
+        注:如果activesCustomizedCoursesId和activesCustomCountryId为空中(null)时,可查询签证方式,住宿方式,兴趣课程,课程时长
+
+    可选参数:
+        {
+        "success":true,
+        "statusCode":"200",
+        "data":{
+            "activesCustomizedCoursesVos":[         // 课程选择
+                {
+                    "id":"5",                       ID
+                    "pid":"1",                      父类主键
+                    "courseName":"日常英语",        课程名字
+                    "coursePrice":"14",             价格
+                    "isTrue":"0",                   是否可用
+                    "createTime":"2016-08-29 15:26:51",
+                    "updateTime":"2016-08-23 15:26:56",
+                    "isDelete":"0"
+                }
+            ],
+            "activesCustomCountryVos":[             // 游学制定>国家选择
+                {
+                    "id":"18",                      ID
+                    "pid":"1",                      父类主键
+                    "countryName":"西雅图",         国家名字
+                    "isTrue":"0",                   是否可用
+                    "countryPrice":"27",            价格
+                    "createTime":"2016-08-10 16:29:36",
+                    "updateTime":"2016-08-10 16:29:41",
+                    "isDelete":"0"
+                }
+            ]
+        },
+        "attribute":null
+    }
+
+    注:activesCustomizedCoursesId和activesCustomCountryId为空中(null)时返回的数据
+        {
+        "success":true,
+        "statusCode":"200",
+        "data":{
+            "activesCustomVisaVos":[            签证方式
+                {
+                    "id":"1",
+                    "visaType":"自备签证",
+                    "price":"200",
+                    "isTrue":"0",
+                    "createTime":"2016-08-03 15:36:21",
+                    "updateTime":"2016-08-08 15:36:24",
+                    "isDelete":"0"
+                }
+            ],
+            "activesCustomModeVos":[            住宿方式
+                {
+                    "id":"1",
+                    "name":"寄宿家庭",
+                    "price":"200",
+                    "isTrue":"0",
+                    "createTime":"2016-08-08 15:37:43",
+                    "updateTime":"2016-08-17 15:37:46",
+                    "isDelete":"0"
+                }
+            ],
+            "activesCustomCoursesVos":[         兴趣课程
+                {
+                    "id":"1",
+                    "courses":"调酒课程",
+                    "prices":"10",
+                    "isTrue":"0",
+                    "createTime":"2016-08-01 15:43:58",
+                    "updateTime":"2016-08-02 15:44:02",
+                    "isDelete":"0"
+                }
+            ],
+            "activesCustomDurationVos":[        课程时长
+                {
+                    "id":"1",
+                    "courseLang":"2",
+                    "isTrue":"0",
+                    "createTime":"2016-08-03 15:39:45",
+                    "updateTime":"2016-08-09 15:39:49",
+                    "isDelete":"0"
+                }
+            ]
+        },
+        "attribute":null
+        }
+
+
+- 游学定制提交
+http://192.168.0.10:8080/dxs-server/ActivesCustomController/personalTailor.do?customizedId=5&customCountryId=18&customCoursesId=1&customModeId=1&customDurationId=1&customVisaId=1
+
+    传递的参数:
+            /**用户id*/
+            userId;
+            /**课程id*/
+            customizedId;
+            /**国家id*/
+            customCountryId;
+            /**选修课ID*/
+            customCoursesId;
+            /**住宿方式*/
+            customModeId;
+            /**课程时长*/
+            customDurationId;
+            /**签证方式id*/
+            customVisaId;
+            /**setouttime*/
+            setouttime;
+            /**紧急联系人*/
+            contacts1;
+            /**紧急联系电话*/
+            phone1;
+            /**紧急联系人2*/
+            contacts2;
+            /**紧急联系电话2*/
+            phone2;
+            /**是否缴费*/
+            result;
+            /**创建时间*/
+            createTime;
+            /**更新时间*/
+            updateTime;
+            /**删除标志*/
+            isDelete;
+
+
+
+
+
+
+
+
+

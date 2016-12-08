@@ -1,0 +1,83 @@
+<html>
+<body>
+<script src="js/jquery-1.8.0.min.js"></script>
+<script>
+//    var arr = [1,2,3];
+//    var sum = 0;
+//    $.each(arr, function(key, value){
+//
+//        sum += value;
+//    });
+
+    var arr = [1,1,2,3,4,4,5,6,6,2,7,"a","a","b"];
+    var arr_a = [];
+    var arr_b = arr.sort();
+    for (var i=0; i<arr_b.length; i++) {
+        if (arr[i] !== arr[i-1]) {
+            arr_a.push(arr[i]);
+        }
+    }
+    console.info(arr_a)
+
+//    alert(sum);
+    $.ajax({
+        url: "http://192.168.0.141:8080/dxs-server/dxsDistCityController/provinceLinkageCity.do?provinceid=130000",
+//        url: "http://192.168.0.141:8080/dxs-server/dxsDistProvinceController/test.do",
+//        url: "http://192.168.0.141:8080/dxs-server/dxsDistProvinceController/list.do",
+        crossDomain: true,
+//        data:
+        dataType: 'jsonp',
+        jsonp : 'callback',
+        jsonpCallback: 'data1',
+        success: function(data, textStatus){
+//            console.info(jcback);
+            console.info(data);
+            var html = "";
+            for (var i=0; i<data.data.length; i++) {
+                html +=("<option>"+ (data.data)[i].city +"</option>");
+            }
+
+            $("select").append(html);
+
+        },
+        error: function(){
+
+        }
+
+
+    });
+</script>
+<h2>Hello World!</h2>
+   <p id="fasong">fasong</p>
+<form action="fileUpload/fileUpload.do" method="post" enctype="multipart/form-data">
+    <input type="file" name="Filedata"/>
+    <input type="submit" value="上传文件"/>
+</form>
+
+<div id="">
+    <select>
+        <option>省份</option>
+    </select>
+</div>
+
+<hr/> http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes
+<div>
+    <p><a href="http://csee-china.cn/dxs-server/redis.do">redis缓存管理</a></p>
+    <p>
+    <form action="oss/fileUpload.do" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <input type="submit" value="上传文件(OSS)"/>
+    </form>
+    </p>
+</div>
+<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=778332425&o=hongxinguoji.cn&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:778332425:1 alt="联系我们">
+
+
+    <form action="http://localhost:8080/dxs-server/account/index.jsp" method="get">
+        <!--<input type="button" value="支付"/>-->
+        <a href="http://localhost:8080/dxs-server/account/index.jsp">支付</a>
+    </form>
+
+
+</body>
+</html>

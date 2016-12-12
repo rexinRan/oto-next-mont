@@ -739,7 +739,7 @@ public class DxsUserController extends BaseController {
 						"FROM\n" +
 						"\tdxs_user_detail u\n" +
 						"WHERE\n" +
-						"\t'2016-12-08' <= u.create_time\n" +
+						"\t'"+ time +"' <= u.create_time\n" +
 						"AND (\n" +
 						"\tu.postal_address LIKE '%"+ address1 +"%'\n" +
 						"\tOR u.postal_address LIKE '%"+ address2 +"%'\n" +
@@ -778,44 +778,3 @@ public class DxsUserController extends BaseController {
 		return replyDataMode;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

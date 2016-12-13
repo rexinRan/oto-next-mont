@@ -284,6 +284,9 @@ public class Order {
                             //保存
                             this.sysServiceI.saveOrUpdate(orderItemsEntity);
 
+                            // 更新订单项中商品的信息(商品数量)
+                            queryAndUpdateProduct.updataProductNumber(item.getOutId(),item.getType(),item.getNum());
+
                             productName.add(item.getName());
                         }
                         // 所有商品名称

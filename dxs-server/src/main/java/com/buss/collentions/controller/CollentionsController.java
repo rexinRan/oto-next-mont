@@ -2,7 +2,6 @@ package com.buss.collentions.controller;
 
 import com.buss.auth.transfer.vo.authen.AuthUserVO;
 import com.buss.authentication.entity.DxsAuthenticationEntity;
-import com.buss.authentication.trans.vo.AuthenticationVo;
 import com.buss.collentions.entity.CollentionsEntity;
 import com.buss.collentions.trans.form.CollentionsSearchForm;
 import com.buss.collentions.trans.vo.CollentionsVo;

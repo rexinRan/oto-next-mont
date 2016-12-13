@@ -5,9 +5,9 @@ import com.buss.common.service.SysServiceI;
 import com.buss.shoppingcart.trans.vo.Cart;
 import com.buss.shoppingcart.trans.vo.ShoppingItme;
 import com.buss.trainonlinecourse.entity.TrainOnlineCourseEntity;
+import com.buss.trainonlinecourse.entity.TrainOnlineCoursesEntity;
 import com.buss.trainoutlinecourse.entity.TrainOutlineCourseEntity;
-import com.sun.tools.javah.InternalError;
-import org.antlr.analysis.NonLLStarDecisionException;
+import com.buss.trainoutlinecourse.entity.TrainOutlineCoursesEntity;
 import org.jweb.core.bean.ReplyDataMode;
 import org.jweb.core.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,7 @@ public class QueryAndUpdateProduct {
 
 
     /**
-     * 支付后更新商品的数量
-     * @param userId    用户
+     * 提交订单后更新商品的数量
      * @param id        商品的ID
      * @param type      产品的类型
      * @param num       商品的数量
@@ -40,26 +39,58 @@ public class QueryAndUpdateProduct {
      */
     @RequestMapping("updataProductNumber")
     @ResponseBody
-    public ReplyDataMode updataProductNumber(String userId,String id,String type,String num){
+    public ReplyDataMode updataProductNumber(String id,String type,String num){
         ReplyDataMode replyDataMode = new ReplyDataMode();
 
         // >产品类型所对应的码:    活动=1    线上课程=5   线下课程=7     鸿鑫币=10(鸿鑫币的id(固定值)=4451a52a68a503cd8061)
-
-        if (!StringUtil.isEmpty(userId) && !StringUtil.isEmpty(id) &&
-                !StringUtil.isEmpty(type) && !StringUtil.isEmpty(num)){
-
-
-            switch (Integer.parseInt(type)){
-                case 1: ;
+        if (!StringUtil.isEmpty(id) && !StringUtil.isEmpty(type) && !StringUtil.isEmpty(num)){
+            // 活动
+            if ("1".equals(type)) {
+                ActivessEntity activessEntity = this.sysServiceI.get(ActivessEntity.class, id);
+                if (activessEntity != null) {
+                    // 报名人数
+                    Integer i = activessEntity.getRegNumbers() + Integer.parseInt(num);
+                    activessEntity.setRegNumbers(i);
+                    this.sysServiceI.saveOrUpdate(activessEntity);
+                }else {
+                    replyDataMode.setStatusCode("没有该商品!");
+                    replyDataMode.setSuccess(false);
+                }
+            // 线上课程
+            }else if ("5".equals(type)){
+                TrainOnlineCoursesEntity trainOnlineCourses = this.sysServiceI.get(TrainOnlineCoursesEntity.class,id);
+                if (trainOnlineCourses != null){
+                    Integer i = trainOnlineCourses.getRegNumbers() + Integer.parseInt(num);
+                    trainOnlineCourses.setRegNumbers(i);
+                    this.sysServiceI.saveOrUpdate(trainOnlineCourses);
+                }else {
+                    replyDataMode.setStatusCode("没有该商品!");
+                    replyDataMode.setSuccess(false);
+                }
+            // 线下课程
+            }else if ("7".equals(type)){
+                TrainOutlineCoursesEntity trainOutline = this.sysServiceI.get(TrainOutlineCoursesEntity.class,id);
+                if (trainOutline != null){
+                    Integer i = trainOutline.getRegNumbers() + Integer.parseInt(num);
+                    trainOutline.setRegNumbers(i);
+                    this.sysServiceI.saveOrUpdate(trainOutline);
+                }else {
+                    replyDataMode.setStatusCode("没有该商品!");
+                    replyDataMode.setSuccess(false);
+                }
             }
-
-
-
         }
         return replyDataMode;
     }
 
-
+    /**
+     * 查询商品的详细信息
+     * @param outId
+     * @param type
+     * @param hxbNum
+     * @param paymentAttribute
+     * @return
+     */
     public Object queryProductInfo(String outId,String type,String hxbNum,String paymentAttribute){
         ReplyDataMode replyDataMode = new ReplyDataMode();
 

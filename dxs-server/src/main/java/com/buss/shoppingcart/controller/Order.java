@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -209,13 +210,16 @@ public class Order {
                 // 订单表的id
                 String orderId = null;
 
-                ordersFrom.setOrderNum(orderNums);
-                ordersFrom.setUserId(user.getId());
-                //0到付,3待付款,9已付款,9待退款,12退款成功,15退款失败
-                ordersFrom.setOrderStatus("3");
-                ordersFrom.setIsDelete("0");
+                // 查询该订单是否存在
+                List<OrdersEntity> ordersEntityList = this.sysServiceI.findByProperty(OrdersEntity.class,"orderNum",orderNums);
+                if (ordersEntityList != null || ordersEntityList.size() <= 0){
+                    ordersFrom.setOrderNum(orderNums);
+                    ordersFrom.setUserId(user.getId());
+                    //0到付,3待付款,9已付款,9待退款,12退款成功,15退款失败
+                    ordersFrom.setOrderStatus("3");
+                    ordersFrom.setIsDelete("0");
 
-                if (!StringUtil.isEmpty(type) || !StringUtil.isEmpty(paymentAttribute)){
+                    if (!StringUtil.isEmpty(type) || !StringUtil.isEmpty(paymentAttribute)){
 
                         // ActivessEntity activessEntity = (ActivessEntity) queryAndUpdateProduct.queryProductInfo(outIds,type,hxbNum,paymentAttribute);
                         /*ShoppingItme shoppingItme = new ShoppingItme();
@@ -237,83 +241,89 @@ public class Order {
                         shoppingItmes = cart.getShoppingItmes();
 
 
-                }else {
-                    //取购物车
-                    cart = cartControoler.selectCartRedis(productId,user.getId());
-                    // 取出所有的订单项
-                    shoppingItmes = cart.getShoppingItmes();
-                }
-                try {
-
-                    // 保存订单&订单详情
-                    if(shoppingItmes.size() > 0){
-
-                        OrdersEntity ordersEntity = (OrdersEntity) ordersFrom.toEntity();
-                        ordersEntity.setCreateTime(date);
-                        // 订单总金额
-                        ordersEntity.setOrderAll(String.valueOf(cart.getTotalPrice()));
-                        // 订单总数量
-                        ordersEntity.setRegNum(String.valueOf(cart.getProductAmount()));
-                        //                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        //                    ordersFrom.setCreateTime(simpleDateFormat.format((Date) ordersEntity.getCreateTime()));
-                        ordersEntity.setOrderTime(date);
-                        this.sysServiceI.saveOrUpdate(ordersEntity);
-
-                        // 查询刚才存储的订单
-                        List<OrdersEntity> list = this.sysServiceI.findByProperty(OrdersEntity.class,"orderNum",orderNums);
-
-                        if (list != null && list.size() > 0){
-                            orderId = list.get(0).getId();
-                        }
-
-                        List<String> productName = new ArrayList<String>();
-                        for (ShoppingItme item : shoppingItmes) {
-                            OrderItemsFroms orderItemsFrom = new OrderItemsFroms();
-                            // 订单ID
-                            orderItemsFrom.setOrderId(orderId);
-                            orderItemsFrom.setUserId(user.getId());
-                            orderItemsFrom.setOutId(item.getOutId());
-                            orderItemsFrom.setOutCatalog(item.getType());
-                            orderItemsFrom.setProductName(item.getName());
-                            orderItemsFrom.setPrice(item.getPrice());
-                            orderItemsFrom.setNum(item.getNum());
-                            orderItemsFrom.setIsDelete("0");
-                            OrderItemsEntitys orderItemsEntity = (OrderItemsEntitys) orderItemsFrom.toEntity();
-                            orderItemsEntity.setOrderTime(date);
-
-                            //保存
-                            this.sysServiceI.saveOrUpdate(orderItemsEntity);
-
-                            // 更新订单项中商品的信息(商品数量)
-                            queryAndUpdateProduct.updataProductNumber(item.getOutId(),item.getType(),item.getNum());
-
-
-                            productName.add(item.getName());
-                        }
-                        // 所有商品名称
-                        map.put("productName",productName);
-                        // 订单编号
-                        map.put("orderNums",orderNums);
-                        // 用户的预留电话
-                        // map.put("phone",ordersFrom.getPhone());
-                        // 商品数量
-                        map.put("productNum",cart.getProductAmount());
-                        // 支付金额
-                        map.put("totalPrice",cart.getTotalPrice());
-
-                        replyDataMode.setData(map);
-                        replyDataMode.setStatusCode("200");
-                        replyDataMode.setSuccess(true);
                     }else {
-                        replyDataMode.setStatusCode("购物车中没有该商品!");
-                        replyDataMode.setSuccess(true);
+                        //取购物车
+                        cart = cartControoler.selectCartRedis(productId,user.getId());
+                        // 取出所有的订单项
+                        shoppingItmes = cart.getShoppingItmes();
                     }
+                    try {
 
-                    //清空Redis中的购物车
-                    cartControoler.del(user.getId(),productId);
+                        // 保存订单&订单详情
+                        if(shoppingItmes.size() > 0){
 
-                }catch (Exception e){
-                    e.printStackTrace();
+                            OrdersEntity ordersEntity = (OrdersEntity) ordersFrom.toEntity();
+                            ordersEntity.setCreateTime(date);
+                            // 订单总金额
+                            ordersEntity.setOrderAll(String.valueOf(cart.getTotalPrice()));
+                            // 订单总数量
+                            ordersEntity.setRegNum(String.valueOf(cart.getProductAmount()));
+                            //                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            //                    ordersFrom.setCreateTime(simpleDateFormat.format((Date) ordersEntity.getCreateTime()));
+                            ordersEntity.setOrderTime(date);
+                            this.sysServiceI.saveOrUpdate(ordersEntity);
+
+                            // 查询刚才存储的订单
+                            List<OrdersEntity> list = this.sysServiceI.findByProperty(OrdersEntity.class,"orderNum",orderNums);
+
+                            if (list != null && list.size() > 0){
+                                orderId = list.get(0).getId();
+                            }
+
+                            List<String> productName = new ArrayList<String>();
+                            for (ShoppingItme item : shoppingItmes) {
+                                OrderItemsFroms orderItemsFrom = new OrderItemsFroms();
+                                // 订单ID
+                                orderItemsFrom.setOrderId(orderId);
+                                orderItemsFrom.setUserId(user.getId());
+                                orderItemsFrom.setOutId(item.getOutId());
+                                orderItemsFrom.setOutCatalog(item.getType());
+                                orderItemsFrom.setProductName(item.getName());
+                                orderItemsFrom.setPrice(item.getPrice());
+                                orderItemsFrom.setNum(item.getNum());
+                                orderItemsFrom.setIsDelete("0");
+                                OrderItemsEntitys orderItemsEntity = (OrderItemsEntitys) orderItemsFrom.toEntity();
+                                orderItemsEntity.setOrderTime(date);
+
+                                //保存
+                                this.sysServiceI.saveOrUpdate(orderItemsEntity);
+
+                                // 更新订单项中商品的信息(商品数量)
+                                queryAndUpdateProduct.updataProductNumber(item.getOutId(),item.getType(),item.getNum());
+
+                                // 检查过期的订单
+                                this.cancelOverdueOrder();
+
+                                productName.add(item.getName());
+                            }
+                            // 所有商品名称
+                            map.put("productName",productName);
+                            // 订单编号
+                            map.put("orderNums",orderNums);
+                            // 用户的预留电话
+                            // map.put("phone",ordersFrom.getPhone());
+                            // 商品数量
+                            map.put("productNum",cart.getProductAmount());
+                            // 支付金额
+                            map.put("totalPrice",cart.getTotalPrice());
+
+                            replyDataMode.setData(map);
+                            replyDataMode.setStatusCode("200");
+                            replyDataMode.setSuccess(true);
+                        }else {
+                            replyDataMode.setStatusCode("购物车中没有该商品!");
+                            replyDataMode.setSuccess(true);
+                        }
+
+                        //清空Redis中的购物车
+                        cartControoler.del(user.getId(),productId);
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }else {
+                    replyDataMode.setStatusCode("您已提交!");
+                    replyDataMode.setSuccess(false);
                 }
             }else {
                 replyDataMode.setStatusCode("请选择商品!");
@@ -391,6 +401,22 @@ public class Order {
             replyDataMode.setStatusCode("请传递订单号!");
             replyDataMode.setSuccess(false);
         }
+
+        return replyDataMode;
+    }
+
+
+    /**
+     * 取消未支付的订单
+     * @return
+     */
+    @RequestMapping(value = "cancelOverdueOrder")
+    @ResponseBody
+    public ReplyDataMode cancelOverdueOrder(){
+        ReplyDataMode replyDataMode = new ReplyDataMode();
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new MyTimer(), 1000, 7200000);// 1分钟执行该任务,任务的执行频率为2小时
+
 
         return replyDataMode;
     }

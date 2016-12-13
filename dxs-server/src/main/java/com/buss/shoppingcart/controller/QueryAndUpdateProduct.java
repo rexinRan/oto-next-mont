@@ -3,6 +3,7 @@ package com.buss.shoppingcart.controller;
 import com.buss.actives.entity.ActivessEntity;
 import com.buss.actives.trans.form.ActivesSearchForm;
 import com.buss.common.service.SysServiceI;
+import com.buss.orderitems.entity.OrderItemsEntitys;
 import com.buss.shoppingcart.trans.vo.Cart;
 import com.buss.shoppingcart.trans.vo.ShoppingItme;
 import com.buss.trainonlinecourse.entity.TrainOnlineCourseEntity;
@@ -17,7 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by HongXinGuoJi-yzg on 2016/11/25.
@@ -80,11 +85,115 @@ public class QueryAndUpdateProduct {
                     replyDataMode.setSuccess(false);
                 }
             }
-//                this.sysServiceI.get()
         }
 
         return replyDataMode;
     }
+
+
+    /**
+     * 更新过期订单项中商品的数量
+     * @return
+     */
+    public ReplyDataMode OverdueOrderProductUpdateNum(){
+        ReplyDataMode replyDataMode = new ReplyDataMode();
+
+        //0到付,3待付款,9已付款,9待退款,12退款成功,15退款失败
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dates = simpleDateFormat.format(date);
+
+        String sql = "SELECT\n" +
+                "\to.id\n" +
+                "FROM\n" +
+                "\tdxs_orders o\n" +
+                "WHERE\n" +
+                "\to.is_delete = 0\n" +
+                "AND o.order_status = 3\n" +
+                "AND TIMESTAMPDIFF(\n" +
+                "\tMINUTE,\n" +
+                "\to.create_time,\n" +
+                "\t'"+ dates +"'\n" +
+                ") > '200'";
+
+        // 过期的订单
+        List<String> list = this.sysServiceI.findListbySql(sql);
+
+        if (list != null && list.size() > 0){
+            for (String s : list) {
+                // 查询订单项
+                OrderItemsEntitys orderItems = sysServiceI.get(OrderItemsEntitys.class,s);
+                if (orderItems != null){
+                    if (orderItems.getNum() != null){
+                        String productNum = String.valueOf(orderItems.getNum());
+                        if (!StringUtil.isEmpty(orderItems.getOutId()) &&
+                                !StringUtil.isEmpty(orderItems.getOutCatalog()) &&
+                                !StringUtil.isEmpty(productNum)){
+
+
+                            String id = orderItems.getOutId();
+                            String type = orderItems.getOutCatalog();
+                            String num = productNum;
+
+                            // 更新数量
+                            // >产品类型所对应的码:    活动=1    线上课程=5   线下课程=7     鸿鑫币=10(鸿鑫币的id(固定值)=4451a52a68a503cd8061)
+                            if (!StringUtil.isEmpty(id) && !StringUtil.isEmpty(type) && !StringUtil.isEmpty(num)){
+                                // 活动
+                                if ("1".equals(type)) {
+                                    ActivessEntity activessEntity = this.sysServiceI.get(ActivessEntity.class, id);
+                                    if (activessEntity != null) {
+                                        // 报名人数
+                                        Integer i = activessEntity.getRegNumbers() - Integer.parseInt(num);
+                                        activessEntity.setRegNumbers(i);
+                                        this.sysServiceI.saveOrUpdate(activessEntity);
+                                    }else {
+                                        replyDataMode.setStatusCode("没有该商品!");
+                                        replyDataMode.setSuccess(false);
+                                    }
+                                    // 线上课程
+                                }else if ("5".equals(type)){
+                                    TrainOnlineCoursesEntity trainOnlineCourses = this.sysServiceI.get(TrainOnlineCoursesEntity.class,id);
+                                    if (trainOnlineCourses != null){
+                                        Integer i = trainOnlineCourses.getRegNumbers() - Integer.parseInt(num);
+                                        trainOnlineCourses.setRegNumbers(i);
+                                        this.sysServiceI.saveOrUpdate(trainOnlineCourses);
+                                    }else {
+                                        replyDataMode.setStatusCode("没有该商品!");
+                                        replyDataMode.setSuccess(false);
+                                    }
+                                    // 线下课程
+                                }else if ("7".equals(type)){
+                                    TrainOutlineCoursesEntity trainOutline = this.sysServiceI.get(TrainOutlineCoursesEntity.class,id);
+                                    if (trainOutline != null){
+                                        Integer i = trainOutline.getRegNumbers() - Integer.parseInt(num);
+                                        trainOutline.setRegNumbers(i);
+                                        this.sysServiceI.saveOrUpdate(trainOutline);
+                                    }else {
+                                        replyDataMode.setStatusCode("没有该商品!");
+                                        replyDataMode.setSuccess(false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+        return replyDataMode;
+    }
+
+
+
+
 
 
     /**
@@ -156,12 +265,8 @@ public class QueryAndUpdateProduct {
 
 
     public static void main(String arge[]){
+        Timer timer = new Timer();
+        timer.schedule(new MyTimer(), 1000, 2000);
 
-        BigDecimal bigDecimal = new BigDecimal("0.01");
-        BigDecimal bigDecimal2 = new BigDecimal("10");
-
-
-
-        System.out.println(Float.valueOf(bigDecimal.multiply(bigDecimal2).toString()));
     }
 }

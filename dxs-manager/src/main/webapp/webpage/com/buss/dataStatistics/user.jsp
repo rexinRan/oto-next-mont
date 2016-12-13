@@ -191,7 +191,7 @@
                                 dataType:"json",
                                 data:{
                                         rangeStatistics:0,
-                                        type:2,
+                                        type:8,
                                         queryType:5
                                 },
                                 success:function(data){

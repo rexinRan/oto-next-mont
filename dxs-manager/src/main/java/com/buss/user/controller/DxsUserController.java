@@ -674,9 +674,9 @@ public class DxsUserController extends BaseController {
 
 			if (type.equals("1")){
 				// 北一区
-				address1 = "黑龙江省";
-				address2 = "吉林省";
-				address3 = "辽宁省";
+				address1 = "黑龙江";
+				address2 = "吉林";
+				address3 = "辽宁";
 			}else if (type.equals("2")){
 				// 北二区
 				address1 = "内蒙古";
@@ -684,15 +684,15 @@ public class DxsUserController extends BaseController {
 				address3 = "北京市";
 			}else if (type.equals("3")){
 				// 北三区
-				address1 = "河北省";
-				address2 = "山东省";
-				address3 = "山西省";
+				address1 = "河北";
+				address2 = "山东";
+				address3 = "山西";
 			}else if (type.equals("4")){
 				// 西北区
-				address1 = "陕西省";
+				address1 = "陕西";
 				address2 = "宁夏";
-				address3 = "甘肃省";
-				address4 = "青海省";
+				address3 = "甘肃";
+				address4 = "青海";
 				address5 = "新疆";
 				address6 = "西藏";
 
@@ -702,31 +702,31 @@ public class DxsUserController extends BaseController {
 
 			}else if (type.equals("5")){
 				// 西南区
-				address1 = "四川省";
+				address1 = "四川";
 				address2 = "重庆市";
-				address3 = "云南省";
-				address4 = "贵州省";
+				address3 = "云南";
+				address4 = "贵州";
 				stringBuffer.append("OR u.postal_address LIKE '%"+ address4 +"%'\n");
 			}else if (type.equals("6")){
 				// 华中区
-				address1 = "河南省";
-				address2 = "湖北省";
-				address3 = "湖南省";
+				address1 = "河南";
+				address2 = "湖北";
+				address3 = "湖南";
 			}else if (type.equals("7")){
 				// 东一区
-				address1 = "安徽省";
-				address2 = "江苏省";
+				address1 = "安徽";
+				address2 = "江苏";
 				address3 = "上海市";
 			}else if (type.equals("8")){
 				// 东二区
-				address1 = "浙江省";
-				address2 = "福建省";
-				address3 = "江西省";
+				address1 = "浙江";
+				address2 = "福建";
+				address3 = "江西";
 			}else if (type.equals("9")){
 				// 南区
-				address1 = "广东省";
-				address2 = "海南省";
-				address3 = "广西省";
+				address1 = "广东";
+				address2 = "海南";
+				address3 = "广西";
 			}
 
 			List<String> counts = null;

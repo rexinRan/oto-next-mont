@@ -1,6 +1,7 @@
 package com.buss.shoppingcart.controller;
 
 import com.buss.actives.entity.ActivessEntity;
+import com.buss.actives.trans.form.ActivesSearchForm;
 import com.buss.common.service.SysServiceI;
 import com.buss.shoppingcart.trans.vo.Cart;
 import com.buss.shoppingcart.trans.vo.ShoppingItme;
@@ -58,6 +59,7 @@ public class QueryAndUpdateProduct {
                 }
             // 线上课程
             }else if ("5".equals(type)){
+<<<<<<< HEAD
                 TrainOnlineCoursesEntity trainOnlineCourses = this.sysServiceI.get(TrainOnlineCoursesEntity.class,id);
                 if (trainOnlineCourses != null){
                     Integer i = trainOnlineCourses.getRegNumbers() + Integer.parseInt(num);
@@ -79,6 +81,12 @@ public class QueryAndUpdateProduct {
                     replyDataMode.setSuccess(false);
                 }
             }
+=======
+//                this.sysServiceI.get()
+            }
+
+
+>>>>>>> 9828ca6d34878142c8f2f1ad0772bf2413b5086b
         }
         return replyDataMode;
     }

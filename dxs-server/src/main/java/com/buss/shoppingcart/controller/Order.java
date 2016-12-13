@@ -285,7 +285,11 @@ public class Order {
                             this.sysServiceI.saveOrUpdate(orderItemsEntity);
 
                             // 更新订单项中商品的信息(商品数量)
+<<<<<<< HEAD
                             queryAndUpdateProduct.updataProductNumber(item.getOutId(),item.getType(),item.getNum());
+=======
+
+>>>>>>> 9828ca6d34878142c8f2f1ad0772bf2413b5086b
 
                             productName.add(item.getName());
                         }

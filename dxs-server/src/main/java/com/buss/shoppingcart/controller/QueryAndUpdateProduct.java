@@ -264,9 +264,15 @@ public class QueryAndUpdateProduct {
     }
 
 
-    public static void main(String arge[]){
-        Timer timer = new Timer();
-        timer.schedule(new MyTimer(), 1000, 2000);
+    public static void main(String arge[]) throws InterruptedException {
+        Timer t = new Timer();
+        t.schedule(new MyTimer(), new Date(114,9,15,10,54,20),3000);
+
+        while(true) {
+            System.out.println(new Date());
+//            Thread.sleep(1000);
+            Thread.sleep(10000);
+        }
 
     }
 }

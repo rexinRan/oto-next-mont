@@ -25,6 +25,13 @@ public class MyTimer extends TimerTask{
 
     @Override
     public void run() {
-        queryAndpdateProduct.OverdueOrderProductUpdateNum();
+        try {
+            this.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.notify();
+//        queryAndpdateProduct.OverdueOrderProductUpdateNum();
+        System.out.println("已运行!");
     }
 }

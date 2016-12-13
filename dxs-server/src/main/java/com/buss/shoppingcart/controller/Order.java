@@ -412,12 +412,13 @@ public class Order {
      */
     @RequestMapping(value = "cancelOverdueOrder")
     @ResponseBody
-    public ReplyDataMode cancelOverdueOrder(){
-        ReplyDataMode replyDataMode = new ReplyDataMode();
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new MyTimer(), 1000, 7200000);// 1分钟执行该任务,任务的执行频率为2小时
+    public void cancelOverdueOrder(){
+        Object obj = new Object();
 
+        synchronized (obj){
+            Timer timer = new Timer();
+            timer.scheduleAtFixedRate(new MyTimer(), 1000,120000 );// 7200000 1分钟执行该任务,任务的执行频率为2小时
+        }
 
-        return replyDataMode;
     }
 }

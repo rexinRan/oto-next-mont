@@ -127,7 +127,61 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
+	<!--定时任务-->
+	<!--<listener>
+		<listener-class>com.buss.shoppingcart.controller.TaskExecutionLisener</listener-class>
+	</listener>-->
+
+
+
+
 	<welcome-file-list>
 		<welcome-file>/index.html</welcome-file>
 	</welcome-file-list>
 </web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

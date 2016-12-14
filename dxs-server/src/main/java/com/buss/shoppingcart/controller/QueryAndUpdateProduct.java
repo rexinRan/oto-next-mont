@@ -10,6 +10,7 @@ import com.buss.trainonlinecourse.entity.TrainOnlineCourseEntity;
 import com.buss.trainonlinecourse.entity.TrainOnlineCoursesEntity;
 import com.buss.trainoutlinecourse.entity.TrainOutlineCourseEntity;
 import com.buss.trainoutlinecourse.entity.TrainOutlineCoursesEntity;
+import org.eclipse.core.internal.filesystem.local.LocalFileSystem;
 import org.jweb.core.bean.ReplyDataMode;
 import org.jweb.core.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +20,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * Created by HongXinGuoJi-yzg on 2016/11/25.
  */
-@Controller
-@RequestMapping("UpdateProduct")
 public class QueryAndUpdateProduct {
 
 
-    @Autowired
     private SysServiceI sysServiceI;
 
+    public QueryAndUpdateProduct(SysServiceI sysServiceI) {
+        this.sysServiceI = sysServiceI;
+    }
 
     /**
      * 提交订单后更新商品的数量
@@ -43,9 +41,7 @@ public class QueryAndUpdateProduct {
      * @param num       商品的数量
      * @return
      */
-    @RequestMapping("updataProductNumber")
-    @ResponseBody
-    public ReplyDataMode updataProductNumber(String id,String type,String num){
+    public void updataProductNumber(String id,String type,String num){
         ReplyDataMode replyDataMode = new ReplyDataMode();
 
         // >产品类型所对应的码:    活动=1    线上课程=5   线下课程=7     鸿鑫币=10(鸿鑫币的id(固定值)=4451a52a68a503cd8061)
@@ -86,8 +82,6 @@ public class QueryAndUpdateProduct {
                 }
             }
         }
-
-        return replyDataMode;
     }
 
 
@@ -116,8 +110,10 @@ public class QueryAndUpdateProduct {
                 "\t'"+ dates +"'\n" +
                 ") > '200'";
 
+        System.out.println("前!");
         // 过期的订单
-        List<String> list = this.sysServiceI.findListbySql(sql);
+        List<String> list = sysServiceI.findListbySql(sql);
+        System.out.println("后!");
 
         if (list != null && list.size() > 0){
             for (String s : list) {
@@ -140,34 +136,34 @@ public class QueryAndUpdateProduct {
                             if (!StringUtil.isEmpty(id) && !StringUtil.isEmpty(type) && !StringUtil.isEmpty(num)){
                                 // 活动
                                 if ("1".equals(type)) {
-                                    ActivessEntity activessEntity = this.sysServiceI.get(ActivessEntity.class, id);
+                                    ActivessEntity activessEntity = sysServiceI.get(ActivessEntity.class, id);
                                     if (activessEntity != null) {
                                         // 报名人数
                                         Integer i = activessEntity.getRegNumbers() - Integer.parseInt(num);
                                         activessEntity.setRegNumbers(i);
-                                        this.sysServiceI.saveOrUpdate(activessEntity);
+                                        sysServiceI.saveOrUpdate(activessEntity);
                                     }else {
                                         replyDataMode.setStatusCode("没有该商品!");
                                         replyDataMode.setSuccess(false);
                                     }
                                     // 线上课程
                                 }else if ("5".equals(type)){
-                                    TrainOnlineCoursesEntity trainOnlineCourses = this.sysServiceI.get(TrainOnlineCoursesEntity.class,id);
+                                    TrainOnlineCoursesEntity trainOnlineCourses = sysServiceI.get(TrainOnlineCoursesEntity.class,id);
                                     if (trainOnlineCourses != null){
                                         Integer i = trainOnlineCourses.getRegNumbers() - Integer.parseInt(num);
                                         trainOnlineCourses.setRegNumbers(i);
-                                        this.sysServiceI.saveOrUpdate(trainOnlineCourses);
+                                        sysServiceI.saveOrUpdate(trainOnlineCourses);
                                     }else {
                                         replyDataMode.setStatusCode("没有该商品!");
                                         replyDataMode.setSuccess(false);
                                     }
                                     // 线下课程
                                 }else if ("7".equals(type)){
-                                    TrainOutlineCoursesEntity trainOutline = this.sysServiceI.get(TrainOutlineCoursesEntity.class,id);
+                                    TrainOutlineCoursesEntity trainOutline = sysServiceI.get(TrainOutlineCoursesEntity.class,id);
                                     if (trainOutline != null){
                                         Integer i = trainOutline.getRegNumbers() - Integer.parseInt(num);
                                         trainOutline.setRegNumbers(i);
-                                        this.sysServiceI.saveOrUpdate(trainOutline);
+                                        sysServiceI.saveOrUpdate(trainOutline);
                                     }else {
                                         replyDataMode.setStatusCode("没有该商品!");
                                         replyDataMode.setSuccess(false);
@@ -179,19 +175,8 @@ public class QueryAndUpdateProduct {
                 }
             }
         }
-
-
-
-
-
-
-
-
-
         return replyDataMode;
     }
-
-
 
 
 
@@ -261,18 +246,5 @@ public class QueryAndUpdateProduct {
         }
 
         return null;
-    }
-
-
-    public static void main(String arge[]) throws InterruptedException {
-        Timer t = new Timer();
-        t.schedule(new MyTimer(), new Date(114,9,15,10,54,20),3000);
-
-        while(true) {
-            System.out.println(new Date());
-//            Thread.sleep(1000);
-            Thread.sleep(10000);
-        }
-
     }
 }

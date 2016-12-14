@@ -40,7 +40,6 @@ public class Order {
     @Autowired
     private CartControoler cartControoler;
 
-    @Autowired
     private QueryAndUpdateProduct queryAndUpdateProduct;
 
 
@@ -56,7 +55,7 @@ public class Order {
     @ResponseBody
     public ReplyDataMode settleAccounts(String outId,String type,String frontMoney,String hxbNum) throws Exception {
         ReplyDataMode replyDataMode = new ReplyDataMode();
-
+        queryAndUpdateProduct = new QueryAndUpdateProduct(sysServiceI);
         // 获取当前登录用户
         Subject currentUser = SecurityUtils.getSubject();
         AuthUserVO user = (AuthUserVO) currentUser.getSession().getAttribute("userInfo");
@@ -291,9 +290,6 @@ public class Order {
                                 // 更新订单项中商品的信息(商品数量)
                                 queryAndUpdateProduct.updataProductNumber(item.getOutId(),item.getType(),item.getNum());
 
-                                // 检查过期的订单
-                                this.cancelOverdueOrder();
-
                                 productName.add(item.getName());
                             }
                             // 所有商品名称
@@ -389,7 +385,7 @@ public class Order {
                     map.put("orderNumber",orderNum);
                     map.put("productNum",productNum);
 
-                    replyDataMode.setData(map);
+                    replyDataMode.setData(map);;
                     replyDataMode.setStatusCode("200");
                     replyDataMode.setSuccess(true);
                 }
@@ -403,22 +399,5 @@ public class Order {
         }
 
         return replyDataMode;
-    }
-
-
-    /**
-     * 取消未支付的订单
-     * @return
-     */
-    @RequestMapping(value = "cancelOverdueOrder")
-    @ResponseBody
-    public void cancelOverdueOrder(){
-        Object obj = new Object();
-
-        synchronized (obj){
-            Timer timer = new Timer();
-            timer.scheduleAtFixedRate(new MyTimer(), 1000,120000 );// 7200000 1分钟执行该任务,任务的执行频率为2小时
-        }
-
     }
 }

@@ -11,9 +11,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * Timer定时器
  * Created by HongXinGuoJi-yzg on 2016/12/14.
  */
 public class TaskExecutionLisener extends HttpServlet implements ServletContextListener{
+
+
+    /*
+    在web.xml中加载该监听器,同servlet一起启动
+
+    <!--定时任务-->
+    <!--<listener>
+    <listener-class>com.buss.shoppingcart.controller.TaskExecutionLisener</listener-class>
+    </listener>-->
+    */
+
 
     /**
      * 监听开始
@@ -26,8 +38,13 @@ public class TaskExecutionLisener extends HttpServlet implements ServletContextL
         // 当监听开始执行时,设置一个TIME
         Timer timer = new Timer();
 
-        MyTimer myTimer = new MyTimer();
-        timer.scheduleAtFixedRate(myTimer,60000,60000);
+        timer.scheduleAtFixedRate(new TimerTask() {
+            // 定时的任务
+            @Override
+            public void run() {
+                System.out.println("执行的任务!");
+            }
+        }, 60000, 60000);
 
     }
 

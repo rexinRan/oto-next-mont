@@ -25,16 +25,15 @@ import java.util.*;
 /**
  * Created by HongXinGuoJi-yzg on 2016/11/25.
  */
+@Controller
+@RequestMapping("/queryAndUpdateProduct")
 public class QueryAndUpdateProduct {
 
-
+    @Autowired
     private SysServiceI sysServiceI;
 
 
 
-    public QueryAndUpdateProduct(SysServiceI sysServiceI) {
-        this.sysServiceI = sysServiceI;
-    }
 
     /**
      * 提交订单后更新商品的数量
@@ -91,7 +90,7 @@ public class QueryAndUpdateProduct {
      * 更新过期订单项中商品的数量
      * @return
      */
-    public ReplyDataMode OverdueOrderProductUpdateNum(){
+    /*public ReplyDataMode OverdueOrderProductUpdateNum(){
         ReplyDataMode replyDataMode = new ReplyDataMode();
 
         //0到付,3待付款,9已付款,9待退款,12退款成功,15退款失败
@@ -178,7 +177,7 @@ public class QueryAndUpdateProduct {
             }
         }
         return replyDataMode;
-    }
+    }*/
 
 
 

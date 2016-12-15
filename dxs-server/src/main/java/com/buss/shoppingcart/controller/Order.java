@@ -40,6 +40,7 @@ public class Order {
     @Autowired
     private CartControoler cartControoler;
 
+    @Autowired
     private QueryAndUpdateProduct queryAndUpdateProduct;
 
 
@@ -55,7 +56,6 @@ public class Order {
     @ResponseBody
     public ReplyDataMode settleAccounts(String outId,String type,String frontMoney,String hxbNum) throws Exception {
         ReplyDataMode replyDataMode = new ReplyDataMode();
-        queryAndUpdateProduct = new QueryAndUpdateProduct(sysServiceI);
         // 获取当前登录用户
         Subject currentUser = SecurityUtils.getSubject();
         AuthUserVO user = (AuthUserVO) currentUser.getSession().getAttribute("userInfo");

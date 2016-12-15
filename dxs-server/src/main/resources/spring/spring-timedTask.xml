@@ -6,16 +6,12 @@
     
     <!--1、定义任务 -->
     <!--要定时执行的方法-->
-    <bean id="testTask" class="com.buss.shoppingcart.controller.TimedTask">
-
-    </bean>
-
-
+    <bean id="testTask" class="com.buss.shoppingcart.controller.TimedTask"/>
 
     <bean id="testTaskJob"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
-            <!--指定要定时执行的方法所在类，将定时任务定义成bean-->
+            <!-- 指定要定时执行的方法所在类，将定时任务定义成bean -->
             <ref bean="testTask" />
         </property>
         <property name="targetMethod">
@@ -54,7 +50,9 @@
         </property>
         <!-- cron表达式，此处是每天10点42执行 -->
         <property name="cronExpression">
-            <value>1/9 * * * * ?</value>
+            <!--<value>1/59 * * * * ?</value>-->
+             <!--每俩小时执行一次-->
+            <value>0 0 0/2 * * ?</value>
         </property>
     </bean>
 
@@ -69,6 +67,8 @@
             </list>
         </property>
     </bean>
+
+
 </beans>
 
 

@@ -48,7 +48,7 @@ public class OssController {
 			if(bucket==null) bucket = oss.bucketName;
 			String url = null;
 			try {
-				url = oss.uploadFile(bucket, "test", mfile);
+				url = oss.uploadFile(bucket, "Test", mfile);
 			} catch (OSSException oe) {
 				oe.printStackTrace();
 			} catch (Exception e) {

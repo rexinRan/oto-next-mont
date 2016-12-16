@@ -8,7 +8,7 @@ import java.net.URLEncoder;
 public class EnDecoderUtil {
     public static void main(String []args) {
         try {
-            String path = "/test/你好/-+去.txt";
+            String path = "/Test/你好/-+去.txt";
 
 
             String str = URLEncoder.encode(path, "UTF-8");

@@ -38,7 +38,7 @@ public class TestController {
 	@RequestMapping({ "/test.do" })
 	public void test(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-		System.out.println("test success");
+		System.out.println("Test success");
 	}
 	
 	@RequestMapping({ "/testjson.do" })

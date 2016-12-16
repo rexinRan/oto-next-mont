@@ -281,7 +281,7 @@ public class SMSServiceImpl extends CommonServiceImpl implements SMSServiceI{
 		/*-------------请填写以下信息------------*/
 		
 		String content = body + java.net.URLEncoder.encode("【") + suffix + java.net.URLEncoder.encode("】");//get content
-//		SMSUtil test = new SMSUtil();
+//		SMSUtil Test = new SMSUtil();
 		
 		long time = 0;
 		try {

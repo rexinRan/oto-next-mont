@@ -1,5 +1,6 @@
 package com.tencent;
 
+import com.tencent.WxPay.ScanPayReqDatas;
 import com.tencent.business.DownloadBillBusiness;
 import com.tencent.business.RefundBusiness;
 import com.tencent.business.RefundQueryBusiness;
@@ -38,12 +39,12 @@ public class WXPay {
 
     /**
      * 请求支付服务
-     * @param scanPayReqData 这个数据对象里面包含了API要求提交的各种数据字段
+     * @param scanPayReqDatas 这个数据对象里面包含了API要求提交的各种数据字段
      * @return API返回的数据
      * @throws Exception
      */
-    public static String requestScanPayService(ScanPayReqData scanPayReqData) throws Exception{
-        return new ScanPayService().request(scanPayReqData);
+    public static String requestScanPayService(ScanPayReqDatas scanPayReqDatas) throws Exception{
+        return new ScanPayService().request(scanPayReqDatas);
     }
 
     /**
@@ -102,8 +103,8 @@ public class WXPay {
      * @param resultListener 商户需要自己监听被扫支付业务逻辑可能触发的各种分支事件，并做好合理的响应处理
      * @throws Exception
      */
-    public static void doScanPayBusiness(ScanPayReqData scanPayReqData, ScanPayBusiness.ResultListener resultListener) throws Exception {
-        new ScanPayBusiness().run(scanPayReqData, resultListener);
+    public static void doScanPayBusiness(ScanPayReqData scanPayReqData,ScanPayReqDatas scanPayReqDatas, ScanPayBusiness.ResultListener resultListener) throws Exception {
+        new ScanPayBusiness().run(scanPayReqData,scanPayReqDatas, resultListener);
     }
 
     /**

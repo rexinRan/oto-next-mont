@@ -13,6 +13,12 @@ import com.tencent.protocol.refund_protocol.RefundResData;
 import com.tencent.service.RefundService;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+
 /**
  * User: rizenguo
  * Date: 2014/12/2
@@ -20,7 +26,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RefundBusiness {
 
-    public RefundBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+    public RefundBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException, UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         refundService = new RefundService();
     }
 

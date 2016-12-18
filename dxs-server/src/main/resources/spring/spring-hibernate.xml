@@ -15,7 +15,7 @@
            default-autowire="byName" default-lazy-init="false">
 	<!-- 自动扫描dao和service包(自动注入) -->
 	<!-- 加载service,此时要排除要controller,因为controller已经spring-mvc中加载过了 -->
-	<context:component-scan base-package="com.buss.*,org.jweb.*,com.alipay.*">
+	<context:component-scan base-package="com.buss.*,org.jweb.*,com.alipay.*,com.tencent.*">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -112,6 +112,7 @@
 			<list>
 				<value>com.buss.*</value>
 				<value>com.alipay.*</value>
+				<value>com.tencent.*</value>
 			</list>
 		</property>
 	</bean>

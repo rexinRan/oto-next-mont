@@ -13,6 +13,12 @@ import com.tencent.service.DownloadBillService;
 import com.thoughtworks.xstream.io.StreamException;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+
 /**
  * User: rizenguo
  * Date: 2014/12/3
@@ -20,7 +26,7 @@ import org.slf4j.LoggerFactory;
  */
 public class DownloadBillBusiness {
 
-    public DownloadBillBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+    public DownloadBillBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException, UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         downloadBillService = new DownloadBillService();
     }
 

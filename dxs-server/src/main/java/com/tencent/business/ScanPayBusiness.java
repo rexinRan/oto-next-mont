@@ -1,5 +1,6 @@
 package com.tencent.business;
 
+import com.tencent.WxPay.ScanPayReqDatas;
 import com.tencent.common.Configure;
 import com.tencent.common.Log;
 import com.tencent.common.Signature;
@@ -18,6 +19,12 @@ import com.tencent.service.ScanPayQueryService;
 import com.tencent.service.ScanPayService;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+
 import static java.lang.Thread.sleep;
 
 /**
@@ -27,7 +34,7 @@ import static java.lang.Thread.sleep;
  */
 public class ScanPayBusiness {
 
-    public ScanPayBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+    public ScanPayBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException, UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         scanPayService = new ScanPayService();
         scanPayQueryService = new ScanPayQueryService();
         reverseService = new ReverseService();
@@ -88,7 +95,7 @@ public class ScanPayBusiness {
      * @param resultListener 商户需要自己监听被扫支付业务逻辑可能触发的各种分支事件，并做好合理的响应处理
      * @throws Exception
      */
-    public void run(ScanPayReqData scanPayReqData, ResultListener resultListener) throws Exception {
+    public void run(ScanPayReqData scanPayReqData, ScanPayReqDatas scanPayReqDatas, ResultListener resultListener) throws Exception {
 
         //--------------------------------------------------------------------
         //构造请求“被扫支付API”所需要提交的数据
@@ -103,7 +110,7 @@ public class ScanPayBusiness {
 
 
         log.i("支付API返回的数据如下：");
-        payServiceResponseString = scanPayService.request(scanPayReqData);
+        payServiceResponseString = scanPayService.request(scanPayReqDatas);
 
         long costTimeEnd = System.currentTimeMillis();
         long totalTimeCost = costTimeEnd - costTimeStart;

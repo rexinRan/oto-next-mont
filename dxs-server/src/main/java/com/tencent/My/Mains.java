@@ -1,19 +1,15 @@
 package com.tencent.My;
 
+import com.buss.common.util.IDUtils;
 import com.tencent.common.MD5;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
 import com.thoughtworks.xstream.io.xml.XppDriver;
-import org.apache.commons.httpclient.util.DateUtil;
 import org.apache.commons.httpclient.util.HttpURLConnection;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.URL;
 import java.util.*;
 
@@ -32,8 +28,6 @@ import java.util.*;
  * 微信支付分析：http://www.2cto.com/kf/201606/514199.html
  * Created by HongXinGuoJi-yzg on 2016/12/16.
  */
-@Controller
-@RequestMapping("/mains")
 public class Mains {
 
     /**
@@ -86,12 +80,12 @@ public class Mains {
     * @param orderId
     * @return
     */
-    /*private String createOrderInfo(String orderId) {
+    private String createOrderInfo(String orderId) {
         //生成订单对象
         UnifiedOrderRequest unifiedOrderRequest = new UnifiedOrderRequest();
         unifiedOrderRequest.setAppid("xxxxxxxxxxxxx");//公众账号ID
         unifiedOrderRequest.setMch_id("xxxxxxxxx");//商户号
-        unifiedOrderRequest.setNonce_str(StringUtil.makeUUID());//随机字符串       说明2(见文末)
+        unifiedOrderRequest.setNonce_str(IDUtils.getUUID());//随机字符串       说明2(见文末)
         unifiedOrderRequest.setBody("xxxxxx");//商品描述
         unifiedOrderRequest.setOut_trade_no(orderId);//商户订单号
         unifiedOrderRequest.setTotal_fee("x");	//金额需要扩大100倍:1代表支付时是0.01
@@ -103,7 +97,7 @@ public class Mains {
         XStream xStream = new XStream(new XppDriver(new XmlFriendlyNameCoder("_-", "_"))); //说明3(见文末)
         xStream.alias("xml", UnifiedOrderRequest.class);//根元素名需要是xml
         return xStream.toXML(unifiedOrderRequest);
-    }*/
+    }
 
 
     /**
@@ -172,18 +166,18 @@ public class Mains {
     /**
      * 生成签名
      *
-     * @param appid_value
-     * @param mch_id_value
-     * @param productId
-     * @param nonce_str_value
-     * @param trade_type
-     * @param notify_url
-     * @param spbill_create_ip
-     * @param total_fee
-     * @param out_trade_no
+     * appid_value
+     * mch_id_value
+     * productId
+     * nonce_str_value
+     * trade_type
+     * notify_url
+     * spbill_create_ip
+     * total_fee
+     * out_trade_no
      * @return
      */
-    /*private String createSign(UnifiedOrderRequest unifiedOrderRequest) {
+    private String createSign(UnifiedOrderRequest unifiedOrderRequest) {
         //根据规则创建可排序的map集合
         SortedMap packageParams = new TreeMap();
         packageParams.put("appid", unifiedOrderRequest.getAppid());
@@ -211,8 +205,8 @@ public class Mains {
         }
         //第二步拼接key，key设置路径：微信商户平台(pay.weixin.qq.com)-->账户设置-->API安全-->密钥设置
         sb.append("key=" +"xxxxxxxxxxxxxxxxx");
-        String sign = MD5.MD5Encode(sb.toString(), "utf-8")
+        String sign = MD5.MD5Encode(sb.toString())
                 .toUpperCase();//MD5加密
         return sign;
-    }*/
+    }
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.buss.activecatelog.entity.ActiveCatelogEntity;
 import com.buss.activecatelog.trans.form.ActiveCatelogSearchForm;
 import com.buss.activecatelog.trans.vo.ActiveCatelogVO;
+import com.buss.common.util.IDUtils;
 import org.jweb.core.bean.PageMode;
 import org.jweb.core.bean.ReplyDataMode;
 import org.jweb.core.query.hibernate.qbc.CriteriaQuery;
@@ -88,6 +89,5 @@ public class ActiveCatelogController {
 
 		return replyDataMode;
 	}
-
 }
 

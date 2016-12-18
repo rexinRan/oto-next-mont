@@ -34,9 +34,21 @@ public class Configure {
 	//机器IP
 	private static String ip = "192.168.0.124";
 
+	// ===================================后定义(yzg)========================================
+	// 交易类型
+	private static String tradeType = "NATIVE";
+
+	// 返回通知URL
+	private static String notifyUrl = "http://www.csee-china.com/images/qidongyishi.jpg";
+
 	//以下是几个API的路径：
+
+	// 扫码支付的API
+	public static String PAY_UN = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+
 	//1）被扫支付API
 	public static String PAY_API = "https://api.mch.weixin.qq.com/pay/micropay";
+	//https://api.mch.weixin.qq.com/pay/unifiedorder
 
 	//2）被扫支付查询API
 	public static String PAY_QUERY_API = "https://api.mch.weixin.qq.com/pay/orderquery";
@@ -120,6 +132,22 @@ public class Configure {
 
 	public static String getIP(){
 		return ip;
+	}
+
+	public static String getTradeType() {
+		return tradeType;
+	}
+
+	public static String getNotifyUrl() {
+		return notifyUrl;
+	}
+
+	public static void setNotifyUrl(String notifyUrl) {
+		Configure.notifyUrl = notifyUrl;
+	}
+
+	public static void setTradeType(String tradeType) {
+		Configure.tradeType = tradeType;
 	}
 
 	public static void setHttpsRequestClassName(String name){

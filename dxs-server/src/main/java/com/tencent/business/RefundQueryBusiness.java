@@ -14,6 +14,10 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
 import java.util.List;
 
 /**
@@ -23,7 +27,7 @@ import java.util.List;
  */
 public class RefundQueryBusiness {
 
-    public RefundQueryBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+    public RefundQueryBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException, UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         refundQueryService = new RefundQueryService();
     }
 

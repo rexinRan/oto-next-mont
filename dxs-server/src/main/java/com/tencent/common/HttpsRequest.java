@@ -59,7 +59,7 @@ public class HttpsRequest implements IServiceRequest{
     private CloseableHttpClient httpClient;
 
     public HttpsRequest() throws UnrecoverableKeyException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
-        init();
+//        init();
     }
 
     private void init() throws IOException, KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyManagementException {

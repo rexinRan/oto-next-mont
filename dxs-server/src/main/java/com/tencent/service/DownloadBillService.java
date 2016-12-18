@@ -6,6 +6,12 @@ import com.tencent.common.RandomStringGenerator;
 import com.tencent.common.Signature;
 import com.tencent.protocol.downloadbill_protocol.DownloadBillReqData;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+
 /**
  * User: rizenguo
  * Date: 2014/10/29
@@ -13,7 +19,7 @@ import com.tencent.protocol.downloadbill_protocol.DownloadBillReqData;
  */
 public class DownloadBillService extends BaseService{
 
-    public DownloadBillService() throws IllegalAccessException, InstantiationException, ClassNotFoundException {
+    public DownloadBillService() throws IllegalAccessException, InstantiationException, ClassNotFoundException, UnrecoverableKeyException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
         super(Configure.DOWNLOAD_BILL_API);
     }
 

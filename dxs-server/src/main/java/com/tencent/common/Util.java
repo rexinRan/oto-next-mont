@@ -1,8 +1,10 @@
 package com.tencent.common;
 
 import com.thoughtworks.xstream.XStream;
+import org.jweb.core.util.StringUtil;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
@@ -113,6 +115,20 @@ public class Util {
      */
     public static String getLocalXMLString(String localPath) throws IOException {
         return Util.inputStreamToString(Util.class.getResourceAsStream(localPath));
+    }
+
+    /**
+     *
+     * @param date
+     * @param pattern
+     * @return
+     */
+    public static String dateFormat(Date date,String pattern){
+        String dateTime = "";
+        if (date != null && !StringUtil.isEmpty(pattern)){
+            dateTime = new SimpleDateFormat(pattern).format(date);
+        }
+        return dateTime;
     }
 
 }
